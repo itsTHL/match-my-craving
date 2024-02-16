@@ -4,9 +4,11 @@ import Recipe from "./Recipe";
 const { Schema, models, model } = mongoose;
 
 const userSchema = new Schema({
-  user: { type: String, required: true },
-  email: { type: String, required: true },
-  password: { type: String, required: true },
+  email: {
+    type: String,
+    unique: [true, "Email already exists!"],
+    required: [true, "Email is required!"],
+  },
   recipes: { type: [Schema.Types.ObjectId], ref: "Recipe" },
 });
 
