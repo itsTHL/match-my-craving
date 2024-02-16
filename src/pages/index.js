@@ -14,7 +14,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <h1>Match my Craving - coming soon!</h1>
+        <div>
+          <Image
+            src="/salad.jpg"
+            alt="photo of a salad"
+            width="100"
+            height="100"
+          />
+        </div>
       </main>
     </>
   );
