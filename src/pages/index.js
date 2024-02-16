@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import UserForm from "@/components/UserForm";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,8 @@ export default function Home() {
             width="100"
             height="100"
           />
+          <h2>Sign in with Google</h2>
+          <button onClick={() => signIn("google")}>Sign in</button>
           <UserForm />
         </div>
       </main>
