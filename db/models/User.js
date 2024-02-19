@@ -9,6 +9,11 @@ const userSchema = new Schema({
     unique: [true, "Email already exists!"],
     required: [true, "Email is required!"],
   },
+  username: {
+    type: String,
+    unique: [true, "Username is already taken, please choose another one"],
+  },
+  password: { type: String },
   recipes: { type: [Schema.Types.ObjectId], ref: "Recipe" },
 });
 

@@ -1,8 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI;
-
-console.log("MONGODB_URI is: ", MONGODB_URI);
 
 /**
  * Global is used here to maintain a cached connection across hot reloads
@@ -38,6 +36,7 @@ async function dbConnect() {
 
   try {
     cached.conn = await cached.promise;
+    console.log("MongoDB connected");
   } catch (e) {
     cached.promise = null;
     throw e;

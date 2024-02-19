@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import clientPromise from "../../../../db/mongodb";
 import dbConnect from "../../../../db/connect";
 import User from "../../../../db/models/User";
 
@@ -12,20 +14,26 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  adapter: MongoDBAdapter(clientPromise),
   callbacks: {
     async session({ session }) {
+      const sessionUser = await User.findOne({ email: session.user.email });
+
       return session;
     },
     async signIn({ profile }) {
       console.log(profile);
       try {
-        await dbConnect;
+        await dbConnect();
 
         const userExist = await User.findOne({ email: profile.email });
 
         if (!userExist) {
           const user = await User.create({
             email: profile.email,
+            username: "",
+            password: "",
+            recipes: [],
           });
         }
 
