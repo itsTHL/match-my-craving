@@ -3,9 +3,11 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import UserForm from "@/components/UserForm";
 import { useSession, signIn, signOut } from "next-auth/react";
-import dbConnect from "../../db/connect";
 
 export default function Home() {
+  const { data: session } = useSession();
+  console.log("session is: ", session);
+
   return (
     <>
       <Head>
@@ -23,7 +25,7 @@ export default function Home() {
           />
           <h2>Sign in with Google</h2>
           <button onClick={() => signIn("google")}>Sign in</button>
-          <button onClick={() => signOut()}>Sign out</button>
+          <button onClick={() => signOut("google")}>Sign out</button>
           {/* <UserForm /> */}
         </div>
       </main>
