@@ -9,8 +9,11 @@ export const authOptions = {
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
+      id: "google",
+      name: "google",
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
+      allowDangerousEmailAccountLinking: true,
     }),
     // ...add more providers here
   ],
@@ -27,6 +30,8 @@ export const authOptions = {
         await dbConnect();
 
         const userExist = await User.findOne({ email: profile.email });
+
+        console.log("User exist: ", userExist);
 
         if (!userExist) {
           const user = await User.create({
