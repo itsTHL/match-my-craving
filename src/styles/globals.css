@@ -1,5 +1,5 @@
 :root {
-  --max-width: 1100px;
+  --max-width: 480px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
@@ -76,12 +76,12 @@
 * {
   box-sizing: border-box;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
 }
 
 html,
 body {
-  max-width: 100vw;
+  max-width: var(--max-width);
   overflow-x: hidden;
 }
 
@@ -93,6 +93,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  border: 3px solid red;
 }
 
 a {
