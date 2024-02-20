@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/index.module.css";
 import UserForm from "@/components/UserForm";
 import { useSession, signIn, signOut } from "next-auth/react";
 

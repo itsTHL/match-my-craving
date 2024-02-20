@@ -1,10 +1,18 @@
 :root {
-  --max-width: 480px;
+  --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
+  --color-primary-dark: #011627;
+  --color-secondary-dark: #426b69;
+  --color-primary-bright: #f5fffa;
+  --color-secondary-bright: #ffc15e;
+  --color-accent-dark: #af3e4d;
+  --color-accent-bright: #d6fff4;
+}
+/* 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -71,7 +79,7 @@
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
   }
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -86,19 +94,24 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: var(--color-primary-dark);
   background: linear-gradient(
       to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
+      var(--color-primary-bright)
     )
-    rgb(var(--background-start-rgb));
-  border: 3px solid red;
+    var(--color-accent-bright);
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+@media (min-width: 600px) {
+  body {
+    border: 3px solid red; /* remove this later, only for orientation*/
+  }
 }
 
 @media (prefers-color-scheme: dark) {
