@@ -1,0 +1,17 @@
+.main {
+  border: 1px solid lightseagreen; /* only for orientation */
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.index__container {
+  /* border: 0.5px solid var(--color-primary-bright); */
+  border: 0.5px solid rgba(245, 255, 250, 0.3);
+  background: rgba(245, 255, 250, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+  border-radius: var(--border-radius-medium);
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}

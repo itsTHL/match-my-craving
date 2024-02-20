@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/index.module.css";
 import UserForm from "@/components/UserForm";
 import { useSession, signIn, signOut } from "next-auth/react";
 
@@ -16,7 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main}`}>
-        <div>
+        <div className={`${styles.index__container}`}>
           <Image
             src="/salad.jpg"
             alt="photo of a salad"
