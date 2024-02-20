@@ -1,0 +1,5 @@
+.main {
+  border: 1px solid lightseagreen; /* only for orientation */
+  padding: 6rem;
+  min-height: 100vh;
+}

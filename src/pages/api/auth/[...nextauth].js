@@ -17,6 +17,7 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  secret: process.env.JWT_SECRET,
   adapter: MongoDBAdapter(clientPromise),
   callbacks: {
     async session({ session }) {
@@ -36,9 +37,10 @@ export const authOptions = {
         if (!userExist) {
           const user = await User.create({
             email: profile.email,
-            username: "",
-            password: "",
-            recipes: [],
+            name: profile.name,
+            username: null,
+            password: null,
+            recipes: null,
           });
         }
 
