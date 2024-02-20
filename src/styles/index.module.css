@@ -1,9 +1,16 @@
 .main {
   border: 1px solid lightseagreen; /* only for orientation */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   padding: 6rem;
   min-height: 100vh;
+}
+
+.index__container {
+  border: 0.5px solid var(--color-primary-bright);
+  padding: 2rem;
+  border-radius: var(--border-radius-medium);
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  background: rgba(245, 255, 250, 0.2);
+  backdrop-filter: blur(15px);
 }

@@ -1,13 +1,15 @@
 :root {
   --max-width: 1100px;
-  --border-radius: 12px;
+
+  --border-radius-medium: 12px;
+  --border-radius-img: 50px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
   --color-primary-dark: #011627;
   --color-secondary-dark: #426b69;
-  --color-primary-bright: #f5fffa;
+  --color-primary-bright: #f5fffa; /* rgb: 245, 255, 250 */
   --color-secondary-bright: #ffc15e;
   --color-accent-dark: #af3e4d;
   --color-accent-bright: #d6fff4;
@@ -95,12 +97,13 @@ body {
 
 body {
   color: var(--color-primary-dark);
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      var(--color-primary-bright)
-    )
-    var(--color-accent-bright);
+  /* background: linear-gradient(to bottom, transparent, var(--color-primary-dark))
+    var(--color-accent-bright);   */
+  background-image: url("/salad.jpg");
+}
+
+img {
+  border-radius: var(--border-radius-img);
 }
 
 a {
