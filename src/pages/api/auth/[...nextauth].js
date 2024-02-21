@@ -24,6 +24,7 @@ export const authOptions = {
       const sessionUser = await User.findOne({ email: session.user.email });
 
       session.user.id = sessionUser._id;
+      console.log("session user id is: ", session.user.id);
 
       return session;
     },
@@ -40,8 +41,6 @@ export const authOptions = {
           const user = await User.create({
             email: profile.email,
             name: profile.name,
-            username: null,
-            password: null,
             recipes: null,
           });
         }

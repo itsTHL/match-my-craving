@@ -10,7 +10,6 @@ const userSchema = new Schema({
     required: [true, "Email is required!"],
   },
   name: { type: String },
-  password: { type: String },
   recipes: { type: [Schema.Types.ObjectId], ref: "Recipe" },
 });
 
