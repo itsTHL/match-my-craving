@@ -1,4 +1,5 @@
 import dbConnect from "../../../db/connect";
+import Recipe from "../../../db/models/Recipe";
 import User from "../../../db/models/User";
 
 export default async function handler(request, response) {
@@ -13,7 +14,23 @@ export default async function handler(request, response) {
       return response.status(404).json({ status: "User not found" });
     }
 
-    return response.status(200).json(user);
+    response.status(200).json(user);
+  }
+
+  if (request.method === "POST") {
+    console.log("id: ", request.query);
+    const recipeData = request.body;
+    const newRecipe = await Recipe.create(recipeData);
+    console.log("new Recipe: ", newRecipe);
+
+    await User.findByIdAndUpdate(
+      id,
+      {
+        $push: { recipes: newRecipe._id },
+      },
+      { new: true } // This option indicates that the updated document should be returned. By default, findByIdAndUpdate returns the document as it was before the update. With { new: true }, it ensures that the updated document is returned.
+    );
+    response.status(201).json({ status: "Recipe added!" });
   } else {
     return response.status(405).json({ message: "Method not allowed" });
   }

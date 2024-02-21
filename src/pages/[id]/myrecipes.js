@@ -19,7 +19,7 @@ export default function MyRecipes() {
     <>
       <h1>Hey {data.name}!</h1>
       <h2>
-        {data.recipes ? (
+        {data.recipes.length !== 0 ? (
           data.recipes.map((recipe) => {
             return (
               <>

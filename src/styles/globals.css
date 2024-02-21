@@ -1,6 +1,7 @@
 :root {
   --max-width: 1100px;
 
+  --border-radius-small: 5px;
   --border-radius-medium: 12px;
   --border-radius-img: 50%;
 

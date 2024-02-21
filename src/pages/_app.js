@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
   return (
     <SWRConfig value={{ fetcher }}>
       <Provider>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </Provider>
     </SWRConfig>
   );
