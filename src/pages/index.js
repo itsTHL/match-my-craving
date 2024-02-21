@@ -28,12 +28,23 @@ export default function Home() {
                 height="150"
               />
               <h2>Hey {session.user.name}!</h2>
-              <button>Start a Session</button>
+              <button>
+                {" "}
+                <Link href="/startsession">Start a Session</Link>
+              </button>
               <button>
                 <Link href="/myrecipes">Show my Recipes</Link>
               </button>
-              <button>Add new Recipe</button>
-              <button onClick={() => signOut("google")}>Sign out</button>
+              <button>
+                {" "}
+                <Link href="/newrecipe">Add new Recipe</Link>
+              </button>
+              <button
+                onClick={() => signOut("google")}
+                className={`${styles.signout_btn}`}
+              >
+                Sign out
+              </button>
             </>
           ) : (
             <Login />
