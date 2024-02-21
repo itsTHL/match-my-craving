@@ -29,13 +29,10 @@ export const authOptions = {
       return session;
     },
     async signIn({ profile }) {
-      console.log(profile);
       try {
         await dbConnect();
 
         const userExist = await User.findOne({ email: profile.email });
-
-        console.log("User exist: ", userExist);
 
         if (!userExist) {
           const user = await User.create({
