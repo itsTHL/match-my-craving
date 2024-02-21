@@ -8,7 +8,7 @@ const recipeSchema = new Schema({
     required: [true, "What's this delicious dish called?"],
   },
   comment: { type: String },
-  image: { type: String },
+  // image: { type: String },
 });
 
 const Recipe = models.Recipe || model("Recipe", recipeSchema);
