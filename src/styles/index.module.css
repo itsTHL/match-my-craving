@@ -3,3 +3,15 @@
   padding: 6rem;
   min-height: 100vh;
 }
+
+.testimg {
+  position: absolute;
+  top: -70px;
+  left: 120px;
+}
+
+.signout_btn {
+  background-color: var(--color-primary-bright);
+  width: auto;
+  padding-inline: 15px;
+}

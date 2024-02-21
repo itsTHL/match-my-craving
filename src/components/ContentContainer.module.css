@@ -1,11 +1,12 @@
-.index__container {
-  /* border: 0.5px solid var(--color-primary-bright); */
+.content_container {
   border: 0.5px solid rgba(245, 255, 250, 0.3);
-  background: rgba(245, 255, 250, 0.2);
-  backdrop-filter: blur(5px);
+  background: rgba(245, 255, 250, 0.4);
+  backdrop-filter: blur(6px);
   padding: 2rem;
   border-radius: var(--border-radius-medium);
   display: flex;
   gap: 20px;
   flex-direction: column;
+  box-shadow: var(--box-shadow);
+  position: relative;
 }
