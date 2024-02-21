@@ -3,3 +3,9 @@
   padding: 6rem;
   min-height: 100vh;
 }
+
+.testimg {
+  position: absolute;
+  top: -70px;
+  left: 120px;
+}
