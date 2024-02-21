@@ -5,8 +5,9 @@
   padding: 2rem;
   border-radius: var(--border-radius-medium);
   display: flex;
-  gap: 20px;
   flex-direction: column;
+  gap: 20px;
   box-shadow: var(--box-shadow);
   position: relative;
+  width: 80%;
 }

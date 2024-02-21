@@ -38,7 +38,7 @@ export const authOptions = {
           const user = await User.create({
             email: profile.email,
             name: profile.name,
-            recipes: null,
+            recipes: [],
           });
         }
 
