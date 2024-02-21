@@ -10,11 +10,6 @@ const userSchema = new Schema({
     required: [true, "Email is required!"],
   },
   name: { type: String },
-  // username: {
-  //   type: String,
-  //   unique: [true, "Username is already taken, please choose another one"],
-  // },
-  password: { type: String },
   recipes: { type: [Schema.Types.ObjectId], ref: "Recipe" },
 });
 
