@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const { Schema, models, model } = mongoose;
 
 const recipeSchema = new Schema({
-  creator: {
+  creatorID: {
     type: String,
     required: [true, "To which cook does this recipe belong?"],
   },
