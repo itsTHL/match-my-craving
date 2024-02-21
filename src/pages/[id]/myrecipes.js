@@ -1,5 +1,4 @@
 import useSWR from "swr";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 export default function MyRecipes() {
@@ -10,10 +9,7 @@ export default function MyRecipes() {
 
   const { data, isLoading, error } = useSWR(`/api/${id}`);
 
-  console.log(data);
-
-  const { data: session } = useSession();
-  console.log("session in all recipes is: ", session);
+  console.log("fetched data on my recipes: ", data);
 
   if (!isReady) return <h2>Not ready...</h2>;
   if (isLoading) return <h2>Loading...</h2>;
@@ -21,7 +17,21 @@ export default function MyRecipes() {
 
   return (
     <>
-      <h1>Hey {session.user.name}!</h1>
+      <h1>Hey {data.name}!</h1>
+      <h2>
+        {data.recipes ? (
+          data.recipes.map((recipe) => {
+            return (
+              <>
+                <h3>{recipe.title}</h3>
+                <h4>{recipe.comment ? recipe.comment : null}</h4>
+              </>
+            );
+          })
+        ) : (
+          <h2>You have not added any recipes yet. Wanna start now?</h2>
+        )}
+      </h2>
     </>
   );
 }
