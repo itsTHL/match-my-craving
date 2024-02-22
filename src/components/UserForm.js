@@ -23,8 +23,6 @@ export default function UserForm({ onSubmit }) {
     });
 
     if (response.ok) {
-      console.log("Recipe added");
-
       event.target.reset();
       console.log("event target: ", event.target);
       router.push(`/`); // CHANGE TO RECIPE DETAILS PAGE LATER!!!
