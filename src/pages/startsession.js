@@ -1,10 +1,13 @@
-import React from "react";
+import Image from "next/image";
+import FoodPref from "@/components/FoodPref";
 
 export default function startsession() {
   return (
     <>
-      <h1>Nothing to see here. ... yet! 😉</h1>
-      <h2>Soon you will be able to start a matching session here.</h2>
+      <Image src="/salad.jpg" alt="photo of a salad" width="150" height="150" />
+      {/* COUNTER components */}
+      <FoodPref />
+      <button>Start the Session!</button>
     </>
   );
 }
