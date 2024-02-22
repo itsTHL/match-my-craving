@@ -1,0 +1,21 @@
+.counter_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.counter_container span {
+  margin: 0;
+}
+
+/* .counter_btn {
+  width: 2rem;
+  font-weight: bold;
+} */
+
+.counter_container button {
+  margin: 0;
+  width: 2rem;
+  font-weight: bold;
+}
