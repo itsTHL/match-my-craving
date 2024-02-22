@@ -29,8 +29,9 @@ export default function Home() {
               />
               <h2>Hey {session.user.name}!</h2>
               <button>
-                {" "}
-                <Link href="/startsession">Start a Session</Link>
+                <Link href={`/${session.user.id}/startsession`}>
+                  Start a Session
+                </Link>
               </button>
               <button>
                 <Link href={`/${session.user.id}/myrecipes`}>
@@ -38,7 +39,6 @@ export default function Home() {
                 </Link>
               </button>
               <button>
-                {" "}
                 <Link href={`/${session.user.id}/newrecipe`}>
                   Add new Recipe
                 </Link>

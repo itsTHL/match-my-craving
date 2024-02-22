@@ -1,12 +1,11 @@
 import ContentContainer from "./ContentContainer";
 import styles from "./UserForm.module.css";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
+import FoodPref from "./FoodPref";
 
-export default function UserForm({ onSubmit }) {
+export default function UserForm() {
   const router = useRouter();
   const { id } = router.query;
-  const { data: session } = useSession();
 
   async function handleSubmitRecipe(event) {
     event.preventDefault();
@@ -57,44 +56,7 @@ export default function UserForm({ onSubmit }) {
             placeholder="Wanna add some notes?"
           ></input>
         </label>
-
-        <fieldset className={`${styles.fieldset}`}>
-          <legend>This dish is... </legend>
-
-          <label htmlFor="vegetarian">
-            <input
-              type="radio"
-              id="vegetarian"
-              name="foodPref"
-              value="vegetarian"
-              className={`${styles.input__radio}`}
-              checked
-            />
-            vegetarian 🥬
-          </label>
-
-          <label htmlFor="vegan">
-            <input
-              type="radio"
-              id="vegan"
-              name="foodPref"
-              value="vegan"
-              className={`${styles.input__radio}`}
-            />
-            vegan 🥬🥬
-          </label>
-
-          <label htmlFor="meat">
-            <input
-              type="radio"
-              id="meat"
-              name="foodPref"
-              value="meat"
-              className={`${styles.input__radio}`}
-            />
-            with meat 🥩
-          </label>
-        </fieldset>
+        <FoodPref />
         <button type="submit">Add to recipes</button>
       </form>
     </ContentContainer>
