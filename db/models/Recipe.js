@@ -9,6 +9,7 @@ const recipeSchema = new Schema({
   },
   comment: { type: String },
   image: { type: String },
+  foodPref: { type: String },
 });
 
 const Recipe = models.Recipe || model("Recipe", recipeSchema);
