@@ -21,7 +21,7 @@ export default function MessageField({ roomId }) {
   return (
     <div>
       type a new message:
-      <input onChange={({ target }) => setInput(target.value)} type="text" />
+      <input onChange={({ target }) => SetInput(target.value)} type="text" />
       <button onClick={() => sendMessage(input || "")}>send</button>
     </div>
   );

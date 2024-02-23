@@ -14,7 +14,7 @@ export default function Messages({ initialMessages, roomId }) {
     return () => {
       pusherClient.unsubscribe(roomId);
     };
-  }, []);
+  }, [roomId]);
 
   return (
     <div>
