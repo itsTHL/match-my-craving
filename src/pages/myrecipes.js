@@ -2,15 +2,11 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
+import Link from "next/link";
 
 export default function MyRecipes() {
   const { data: session } = useSession();
   console.log("session in my recipes: ", session);
-
-  // const router = useRouter();
-  // const { isReady } = router;
-  // const { id } = router.query;
-  // console.log("id from router: ", id);
 
   const id = session.user.id;
   console.log("do i have an id? ", id);
@@ -30,22 +26,22 @@ export default function MyRecipes() {
     <>
       {session ? (
         <>
-          {/* <h1>Hey {data.name}!</h1>
-          {data.recipes.length !== 0 ? (
-            data.recipes.map((recipe) => {
-              return (
-                <>
-                  <h3>{recipe.title}</h3>
-                  <p>{recipe.comment ? recipe.comment : null}</p>
-                </>
-              );
-            })
-          ) : (
-            <h2>You have not added any recipes yet. Wanna start now?</h2>
-          )} */}
+          <h1>Hey {user.name}!</h1>
           <ul>
-            <li>1</li>
-            <li>2</li>
+            {recipes.length !== 0 ? (
+              recipes.map((recipe) => {
+                return (
+                  <li key={recipe._id}>
+                    <Link href="/">
+                      <h3>{recipe.title}</h3>
+                      <p>{recipe.comment ? recipe.comment : null}</p>
+                    </Link>
+                  </li>
+                );
+              })
+            ) : (
+              <h3>You have not added any recipes yet. Wanna start now?</h3>
+            )}
           </ul>
         </>
       ) : (
