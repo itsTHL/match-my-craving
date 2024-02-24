@@ -1,33 +1,24 @@
-import Messages from "@/components/Messages";
 import MessageField from "@/components/MessageField";
+import Messages from "@/components/Messages";
 import { useRouter } from "next/router";
-import useSWR from "swr";
 
-export default async function RoomPage() {
+export default function RoomId() {
   const router = useRouter();
-  const { id: roomId } = router.query;
+  const { id } = router.query;
+  console.log("what is the room id? ", id);
 
-  const { data: existingMessages } = useSWR(`/api/rooms/${roomId}`);
+  const initialMessages = [
+    { _id: "123", text: "Hello, hello 1" },
+    { _id: "456", text: "Hello, hello 2" },
+  ];
 
-  console.log("fetched data inside room: ", data);
-
-  // const existingMessages = await Message.findMany({
-  //   where: {
-  //     chatRoomId: roomId,
-  //   },
-  // });
-
-  const serializedMessages = existingMessages.map((message) => ({
-    text: message.text,
-    id: message.id,
-  }));
+  // const roomId = "0911";
 
   return (
-    <div>
-      <h1>hello</h1>
-      <p>messages:</p>
-      <Messages roomId={roomId} initialMessages={serializedMessages} />
-      <MessageField roomId={roomId} />
-    </div>
+    <>
+      <h1>Hello, we in the room Id page</h1>
+      <Messages initialMessages={initialMessages} roomId={id} />
+      <MessageField />
+    </>
   );
 }

@@ -16,10 +16,14 @@ export default function Messages({ initialMessages, roomId }) {
     };
   }, [roomId]);
 
+  if (!initialMessages) {
+    return <div>Loading initial messages...</div>;
+  }
+
   return (
     <div>
       {initialMessages.map((message) => (
-        <p key={message.id}>{message.text}</p>
+        <p key={message._id}>{message.text}</p>
       ))}
       {incomingMessages.map((text, i) => (
         <p key={i}>{text}</p>

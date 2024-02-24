@@ -5,6 +5,7 @@ import User from "../../../db/models/User";
 export default async function handler(request, response) {
   await dbConnect();
   const { id } = request.query;
+  console.log("request query: ", request.query);
 
   if (request.method === "GET") {
     const user = await User.findById(id).populate("recipes");
@@ -18,7 +19,6 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "POST") {
-    console.log("id: ", request.query);
     const recipeData = request.body;
     const newRecipe = await Recipe.create(recipeData);
     console.log("new Recipe: ", newRecipe);

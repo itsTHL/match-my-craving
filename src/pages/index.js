@@ -27,9 +27,7 @@ export default function Home() {
           />
           <h2>Hey {session.user.name}!</h2>
           <button>
-            <Link href={`/${session.user.id}/startsession`}>
-              Start a Session
-            </Link>
+            <Link href={`/${session.user.id}/pushertest`}>Start a Session</Link>
           </button>
           <button>
             <Link href={`/${session.user.id}/myrecipes`}>Show my Recipes</Link>

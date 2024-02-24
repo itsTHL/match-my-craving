@@ -1,7 +1,6 @@
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import UserForm from "@/components/UserForm";
-import ContentContainer from "@/components/ContentContainer";
 
 export default function NewRecipe() {
   const router = useRouter();

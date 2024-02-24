@@ -1,4 +1,3 @@
-import React from "react";
 import dbConnect from "../../../../db/connect";
 import Room from "../../../../db/models/Room";
 
