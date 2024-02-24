@@ -33,6 +33,7 @@ export default function MyRecipes() {
                   <Link key={recipe._id} href={`/myrecipes/${recipe._id}`}>
                     <li>
                       <div>
+                        {/* THIS BUTTON NEEDS TO BE Z-INDEX 2! */}
                         <button type="button">❌</button>
                         <Image
                           src="/salad.jpg"

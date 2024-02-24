@@ -31,6 +31,7 @@ export default function RecipeDetailsPage() {
           <button type="button">
             <Link href="/myrecipes">Back to all recipes</Link>
           </button>
+          <button type="button">Edit Recipe</button>
         </>
       )}
     </>
