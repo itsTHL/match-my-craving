@@ -30,7 +30,7 @@ export default function MyRecipes() {
               recipes.map((recipe) => {
                 return (
                   <li key={recipe._id}>
-                    <Link href="/">
+                    <Link href={`/myrecipes/${recipe._id}`}>
                       <h3>{recipe.title}</h3>
                       <p>{recipe.comment ? recipe.comment : null}</p>
                     </Link>
