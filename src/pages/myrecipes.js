@@ -1,5 +1,4 @@
 import useSWR from "swr";
-import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
 import Link from "next/link";
@@ -13,14 +12,13 @@ export default function MyRecipes() {
 
   const { data: user, isLoading, error } = useSWR(`/api/${id}`);
 
+  if (isLoading) return <h2>Loading...</h2>;
+  if (error) return <h2>Error!</h2>;
+
   console.log("fetched data on my recipes: ", user);
 
   const { recipes } = user;
   console.log("recipes? ", recipes);
-
-  // if (!isReady) return <h2>Not ready...</h2>;
-  if (isLoading) return <h2>Loading...</h2>;
-  if (error) return <h2>Error!</h2>;
 
   return (
     <>

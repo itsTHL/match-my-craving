@@ -45,7 +45,7 @@ export default function Home() {
             <Link href={`/myrecipes`}>Show my Recipes</Link>
           </button>
           <button>
-            <Link href={`/newrecipe`}>Add new Recipe</Link>
+            <Link href={`/${session.user.id}/newrecipe`}>Add new Recipe</Link>
           </button>
           <button
             onClick={() => signOut("google")}
