@@ -30,7 +30,7 @@ export default function NewRecipe() {
     if (response.ok) {
       event.target.reset();
       console.log("response: ", response);
-      router.push(`${response.url}`); // CHANGE TO RECIPE DETAILS PAGE LATER!!!
+      router.push(`${response.url}`);
     } else {
       console.error("Recipe not added, try again");
     }

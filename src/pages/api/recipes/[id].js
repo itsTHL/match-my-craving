@@ -17,5 +17,12 @@ export default async function handler(request, response) {
     }
 
     response.status(200).json(recipe);
+  } else if (request.method === "PUT") {
+    await Recipe.findByIdAndUpdate(id, {
+      $set: request.body,
+    });
+    return response
+      .status(200)
+      .json({ status: "Product successfully updated." });
   }
 }
