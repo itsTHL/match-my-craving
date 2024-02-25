@@ -1,29 +1,29 @@
 import { pusherServer } from "@/lib/pusher";
 import dbConnect from "../../../db/connect";
 import Message from "../../../db/models/Message";
-import Room from "../../../db/models/MatchingSession";
+import MatchingSession from "../../../db/models/MatchingSession";
 import useSWR from "swr";
 
 export default async function handler(request, response) {
   await dbConnect();
-  const { id } = request.query;
-  console.log("is this the room id? ", request.query);
-
   if (request.method === "POST") {
     const messageData = request.body;
     const newMessage = await Message.create(messageData);
     console.log("new Message: ", newMessage);
 
-    const messageId = newMessage._id;
-    console.log("msg id: ", messageId);
+    const matchingSessionId = newMessage.matchingSessionId;
+    console.log("ms id: ", matchingSessionId);
 
-    pusherServer.trigger(id, "incoming-message", newMessage.text);
-    // this id needs to be the channel-name = roomId
+    pusherServer.trigger(
+      matchingSessionId,
+      "incoming-message",
+      newMessage.text
+    );
 
-    await Room.findByIdAndUpdate(
-      id,
+    await MatchingSession.findByIdAndUpdate(
+      matchingSessionId,
       {
-        $push: { message: newMessage._id },
+        $push: { messages: newMessage._id },
       },
       { new: true }
     );

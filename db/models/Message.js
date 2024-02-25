@@ -4,8 +4,7 @@ const { Schema, models, model } = mongoose;
 
 const messageSchema = new Schema({
   text: { type: String },
-  room: { type: String },
-  roomId: { type: String },
+  matchingSessionId: { type: String },
 });
 
 const Message = models.Message || model("Message", messageSchema);

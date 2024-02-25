@@ -1,20 +1,21 @@
+import { isNotFoundError } from "next/dist/client/components/not-found";
 import { useState } from "react";
 
 export default function MessageField({ roomId }) {
   const [input, setInput] = useState();
 
-  async function sendMessage(event) {
+  async function handleSubmitMessage(event) {
     event.preventDefault();
-
     const formData = new FormData(event.target);
     const newMessage = Object.fromEntries(formData);
+    // console.log("newMessage ", newMessage);
 
     const response = await fetch(`/api/message`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newMessage),
+      body: JSON.stringify({ text: input, matchingSessionId: roomId }),
     });
 
     if (response.ok) {
@@ -25,8 +26,15 @@ export default function MessageField({ roomId }) {
     }
   }
 
+  // async function handleSubmit(event) {
+  //   () => {
+  //     event.preventDefault();
+  //     sendMessage(input);
+  //   };
+  // }
+
   return (
-    <form onSubmit={() => sendMessage(input)}>
+    <form onSubmit={handleSubmitMessage}>
       <h5>type a new message: </h5>
       <input
         onChange={({ target }) => setInput(target.value)}

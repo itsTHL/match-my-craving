@@ -31,7 +31,6 @@ export default async function handler(request, response) {
     );
     response.setHeader("Location", `/myrecipes/${newRecipe._id}`);
     response.status(302).end();
-    response.status(201).json({ status: "Recipe added!" });
   } else {
     return response.status(405).json({ message: "Method not allowed" });
   }

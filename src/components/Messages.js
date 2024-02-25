@@ -1,14 +1,14 @@
 import { pusherClient } from "@/lib/pusher";
 import { useEffect, useState } from "react";
 
-export default function Messages({ initialMessages, roomId }) {
-  const [incomingMessages, setIncomingMessages] = useState([]);
+export default function Messages({ existingMessages, roomId }) {
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     pusherClient.subscribe(roomId);
 
     pusherClient.bind("incoming-message", (text) => {
-      setIncomingMessages((prev) => [...prev, text]);
+      setMessages((prev) => [...prev, text]);
     });
 
     return () => {
@@ -16,16 +16,14 @@ export default function Messages({ initialMessages, roomId }) {
     };
   }, [roomId]);
 
-  if (!initialMessages) {
-    return <div>Loading initial messages...</div>;
-  }
-
   return (
     <div>
-      {initialMessages.map((message) => (
-        <p key={message._id}>{message.text}</p>
-      ))}
-      {incomingMessages.map((text, i) => (
+      {existingMessages.length !== 0
+        ? existingMessages.map((message) => (
+            <p key={message._id}>{message.text}</p>
+          ))
+        : null}
+      {messages.map((text, i) => (
         <p key={i}>{text}</p>
       ))}
     </div>
