@@ -11,12 +11,12 @@ export default function MyRecipes() {
   const id = session.user.id;
   console.log("do i have an id? ", id);
 
-  const { data: user, isLoading, error } = useSWR(`/api/${id}`);
+  const { data: user, isLoading, error } = useSWR(`/api/user/${id}`);
 
   if (isLoading) return <h2>Loading...</h2>;
   if (error) return <h2>Error!</h2>;
 
-  console.log("fetched data on my recipes: ", user);
+  console.log("found user on my recipes: ", user);
 
   const { recipes } = user;
   console.log("recipes? ", recipes);
