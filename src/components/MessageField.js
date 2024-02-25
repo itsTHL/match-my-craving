@@ -1,4 +1,3 @@
-import { isNotFoundError } from "next/dist/client/components/not-found";
 import { useState } from "react";
 
 export default function MessageField({ roomId }) {

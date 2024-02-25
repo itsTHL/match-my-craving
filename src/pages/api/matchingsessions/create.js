@@ -13,10 +13,10 @@ export default async function handler(request, response) {
       );
       console.log("new matching Session: ", newMatchingSession);
 
-      response.setHeader(
-        "Location",
-        `/matchingsessions/${newMatchingSession._id}`
-      );
+      const id = newMatchingSession._id;
+      console.log("id or oid? ", id);
+
+      response.setHeader("Location", `/matchingsessions/${id.$oid ?? id}`);
       response.status(302).end();
     } catch (error) {
       console.error("Error creating matching session: ", error);
