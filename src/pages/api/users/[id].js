@@ -16,14 +16,8 @@ export default async function handler(request, response) {
     }
 
     response.status(200).json(user);
-<<<<<<< HEAD:src/pages/api/[id].js
-  }
-
-  if (request.method === "POST") {
-=======
   } else if (request.method === "POST") {
     console.log("id: ", request.query);
->>>>>>> main:src/pages/api/users/[id].js
     const recipeData = request.body;
     const newRecipe = await Recipe.create(recipeData);
     console.log("new Recipe: ", newRecipe);
