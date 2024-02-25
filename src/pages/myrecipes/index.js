@@ -2,6 +2,7 @@ import useSWR from "swr";
 import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function MyRecipes() {
   const { data: session } = useSession();
@@ -10,12 +11,12 @@ export default function MyRecipes() {
   const id = session.user.id;
   console.log("do i have an id? ", id);
 
-  const { data: user, isLoading, error } = useSWR(`/api/${id}`);
+  const { data: user, isLoading, error } = useSWR(`/api/users/${id}`);
 
   if (isLoading) return <h2>Loading...</h2>;
   if (error) return <h2>Error!</h2>;
 
-  console.log("fetched data on my recipes: ", user);
+  console.log("found user on my recipes: ", user);
 
   const { recipes } = user;
   console.log("recipes? ", recipes);
@@ -29,12 +30,22 @@ export default function MyRecipes() {
             {recipes.length !== 0 ? (
               recipes.map((recipe) => {
                 return (
-                  <li key={recipe._id}>
-                    <Link href={`/myrecipes/${recipe._id}`}>
-                      <h3>{recipe.title}</h3>
-                      <p>{recipe.comment ? recipe.comment : null}</p>
-                    </Link>
-                  </li>
+                  <Link key={recipe._id} href={`/myrecipes/${recipe._id}`}>
+                    <li>
+                      <div>
+                        {/* THIS BUTTON NEEDS TO BE Z-INDEX 2! */}
+                        <button type="button">❌</button>
+                        <Image
+                          src="/salad.jpg"
+                          alt="photo of a salad"
+                          width="100"
+                          height="100"
+                        />
+                        <h3>{recipe.title}</h3>
+                        <p>{recipe.comment ? recipe.comment : null}</p>
+                      </div>
+                    </li>
+                  </Link>
                 );
               })
             ) : (

@@ -12,7 +12,7 @@ export default function RecipeDetailsPage() {
   const { id } = router.query;
   console.log("is this the correct id? ", id);
 
-  const { data: recipe, isLoading, error } = useSWR(`/api/recipe/${id}`);
+  const { data: recipe, isLoading, error } = useSWR(`/api/recipes/${id}`);
 
   if (isLoading) return <h2>Loading...</h2>;
   if (error) return <h2>Error!</h2>;
@@ -30,6 +30,10 @@ export default function RecipeDetailsPage() {
           <p>{recipe.comment ? recipe.comment : null}</p>
           <button type="button">
             <Link href="/myrecipes">Back to all recipes</Link>
+          </button>
+          <button type="button">
+            {" "}
+            <Link href={`/myrecipes/${id}/editrecipe`}>Edit this Recipe</Link>
           </button>
         </>
       )}

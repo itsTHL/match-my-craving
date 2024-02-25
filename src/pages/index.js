@@ -26,18 +26,6 @@ export default function Home() {
             height="150"
           />
           <h2>Hey {session.user.name}!</h2>
-          {/* <button>
-            <Link href={`/${session.user.id}/startsession`}>
-              Start a Session
-            </Link>
-          </button>
-          <button>
-            <Link href={`/${session.user.id}/myrecipes`}>Show my Recipes</Link>
-          </button>
-          <button>
-            <Link href={`/${session.user.id}/newrecipe`}>Add new Recipe</Link>
-          </button> */}
-
           <button>
             <Link href={`/startsession`}>Start a Session</Link>
           </button>
@@ -45,7 +33,7 @@ export default function Home() {
             <Link href={`/myrecipes`}>Show my Recipes</Link>
           </button>
           <button>
-            <Link href={`/${session.user.id}/newrecipe`}>Add new Recipe</Link>
+            <Link href={`/newrecipe`}>Add new Recipe</Link>
           </button>
           <button
             onClick={() => signOut("google")}
