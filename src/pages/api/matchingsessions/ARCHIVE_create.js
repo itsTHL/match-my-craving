@@ -1,5 +1,5 @@
 import dbConnect from "../../../../db/connect";
-import Room from "../../../../db/models/Room";
+import Room from "../../../../db/models/MatchingSession";
 
 export default async function CreateRoom(request, response) {
   await dbConnect();

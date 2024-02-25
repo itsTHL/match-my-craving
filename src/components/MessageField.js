@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function MessageField() {
+export default function MessageField({ roomId }) {
   const [input, setInput] = useState();
 
   async function sendMessage(event) {
@@ -26,7 +26,7 @@ export default function MessageField() {
   }
 
   return (
-    <form onSubmit={sendMessage}>
+    <form onSubmit={() => sendMessage(input)}>
       <h5>type a new message: </h5>
       <input
         onChange={({ target }) => setInput(target.value)}

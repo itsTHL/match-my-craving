@@ -1,7 +1,7 @@
 import { pusherServer } from "@/lib/pusher";
 import dbConnect from "../../../db/connect";
 import Message from "../../../db/models/Message";
-import Room from "../../../db/models/Room";
+import Room from "../../../db/models/MatchingSession";
 import useSWR from "swr";
 
 export default async function handler(request, response) {

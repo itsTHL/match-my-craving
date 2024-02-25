@@ -1,32 +1,35 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-export default function PusherTest() {
+export default function SLetsMatch() {
   const [roomId, setRoomId] = useState();
   const router = useRouter();
   const { id } = router.query;
   console.log("is this the user id in URL? ", id);
 
-  async function createRoom(event) {
-    event.preventDefault();
+  async function createRoom() {
+    // event.preventDefault();
 
-    const formData = new FormData(event.target);
-    const newRoom = Object.fromEntries(formData);
+    // const formData = new FormData(event.target);
+    // const newRoom = Object.fromEntries(formData);
 
-    const response = await fetch(`/api/rooms/${roomId}`, {
+    const response = await fetch(`/api/matchingsessions/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newRoom),
+      body: JSON.stringify(null),
     });
 
     if (response.ok) {
-      event.target.reset();
+      // event.target.reset();
+      console.log("response: ", response);
 
-      router.push(`/room/${roomId}`);
+      router.push(`${response.url}`);
+
+      // router.push(`/room/${roomId}`);
     } else {
-      console.error("Room not created, try again");
+      console.error("Matching session not started, try again");
     }
   }
 
@@ -35,14 +38,16 @@ export default function PusherTest() {
   // }
 
   return (
-    <form onSubmit={createRoom}>
+    <form>
       <input
         type="text"
         name="roomId"
         id="roomId"
         onChange={({ target }) => setRoomId(target.value)}
       />
-      <button type="submit">Create Room</button>
+      <button type="button" onClick={createRoom}>
+        Create Room
+      </button>
     </form>
   );
 }
