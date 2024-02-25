@@ -11,7 +11,7 @@ export default function MyRecipes() {
   const id = session.user.id;
   console.log("do i have an id? ", id);
 
-  const { data: user, isLoading, error } = useSWR(`/api/user/${id}`);
+  const { data: user, isLoading, error } = useSWR(`/api/users/${id}`);
 
   if (isLoading) return <h2>Loading...</h2>;
   if (error) return <h2>Error!</h2>;
