@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import dbConnect from "../../../../db/connect";
 import Recipe from "../../../../db/models/Recipe";
 import User from "../../../../db/models/User";
