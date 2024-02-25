@@ -13,7 +13,7 @@ export default function FoodPref() {
           name="foodPref"
           value="vegetarian"
           className={`${styles.input__radio}`}
-          checked
+          defaultChecked
         />
         vegetarian 🥬
       </label>
