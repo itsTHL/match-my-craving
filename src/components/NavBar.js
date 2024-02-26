@@ -11,7 +11,7 @@ export default function NavBar() {
         height="150"
         className={`${styles.nav_logo}`}
       />
-      <button>Back</button>
+      <button>&larr;</button>
     </nav>
   );
 }
