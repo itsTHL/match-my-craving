@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
 import Link from "next/link";
 import Image from "next/image";
+import styles from "../../styles/myrecipes.module.css";
 
 export default function MyRecipes() {
   const { data: session, status } = useSession();
@@ -32,24 +33,31 @@ export default function MyRecipes() {
     <>
       {session ? (
         <>
-          <h1>Hey {user.name}!</h1>
-          <ul>
+          <h1>My recipes</h1>
+          <ul className={`${styles.recipe_list}`}>
             {recipes.length !== 0 ? (
               recipes.map((recipe) => {
                 return (
                   <Link key={recipe._id} href={`/myrecipes/${recipe._id}`}>
-                    <li>
-                      <div>
+                    <li className={`${styles.recipe_listItem}`}>
+                      <div className={`${styles.recipe_card}`}>
                         {/* THIS BUTTON NEEDS TO BE Z-INDEX 2! */}
-                        <button type="button">❌</button>
+                        {/* <button
+                          className={`${styles.delete_btn}`}
+                          type="button"
+                        >
+                          ❌
+                        </button> */}
+                        {/* <div className={`${styles.img_container}`}> */}
                         <Image
                           src="/salad.jpg"
                           alt="photo of a salad"
-                          width="100"
-                          height="100"
+                          width="80"
+                          height="80"
+                          // fill={true}
                         />
-                        <h3>{recipe.title}</h3>
-                        <p>{recipe.comment ? recipe.comment : null}</p>
+                        {/* </div> */}
+                        <h4>{recipe.title}</h4>
                       </div>
                     </li>
                   </Link>
