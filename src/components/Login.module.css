@@ -1,0 +1,10 @@
+.logo {
+  box-shadow: none;
+  position: absolute;
+  top: -100px;
+  right: 0;
+}
+
+.heading {
+  padding-top: 40px;
+}
