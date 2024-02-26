@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import UserForm from "@/components/UserForm";
+import useSWR from "swr";
 
 export default function EditRecipe() {
   const router = useRouter();
@@ -8,7 +9,9 @@ export default function EditRecipe() {
 
   console.log("user or recipe id? ", id);
 
-  if (!isReady) return <h2>Not ready...</h2>;
+  if (!isReady) {
+    return <h2>Not ready...</h2>;
+  }
 
   async function handleEditRecipe(event) {
     event.preventDefault();

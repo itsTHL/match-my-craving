@@ -6,10 +6,6 @@ import Image from "next/image";
 
 export default function MyRecipes() {
   const { data: session, status } = useSession();
-  console.log("session in my recipes: ", session);
-
-  // const id = session.user.id;
-  // console.log("do i have an id? ", id);
 
   const {
     data: user,

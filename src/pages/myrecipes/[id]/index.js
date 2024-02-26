@@ -4,6 +4,8 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Login from "@/components/Login";
 import Link from "next/link";
+import UserForm from "@/components/UserForm";
+import { useState } from "react";
 
 export default function RecipeDetailsPage() {
   const { data: session } = useSession();
@@ -13,11 +15,16 @@ export default function RecipeDetailsPage() {
   console.log("is this the correct id? ", id);
 
   const { data: recipe, isLoading, error } = useSWR(`/api/recipes/${id}`);
+  const [recipeForm, setRecipeForm] = useState(false);
 
   if (isLoading) return <h2>Loading...</h2>;
   if (error) return <h2>Error!</h2>;
 
   console.log("recipe in recipe details page: ", recipe);
+
+  const toggleRecipeForm = () => {
+    setRecipeForm(!recipeForm); // Toggle the showForm state
+  };
 
   return (
     <>
@@ -31,10 +38,14 @@ export default function RecipeDetailsPage() {
           <button type="button">
             <Link href="/myrecipes">Back to all recipes</Link>
           </button>
-          <button type="button">
+          {/* <button type="button">
             {" "}
             <Link href={`/myrecipes/${id}/editrecipe`}>Edit this Recipe</Link>
+          </button> */}
+          <button type="button" onClick={toggleRecipeForm}>
+            Edit
           </button>
+          {recipeForm && <UserForm />}
         </>
       )}
     </>
