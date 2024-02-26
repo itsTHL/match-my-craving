@@ -5,16 +5,27 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function MyRecipes() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   console.log("session in my recipes: ", session);
 
-  const id = session.user.id;
-  console.log("do i have an id? ", id);
+  // const id = session.user.id;
+  // console.log("do i have an id? ", id);
 
-  const { data: user, isLoading, error } = useSWR(`/api/users/${id}`);
+  const {
+    data: user,
+    isLoading,
+    error,
+  } = useSWR(session?.user ? `/api/users/${session.user.id}` : null);
 
-  if (isLoading) return <h2>Loading...</h2>;
-  if (error) return <h2>Error!</h2>;
+  if (status === "loading") {
+    return null;
+  }
+  if (isLoading) {
+    return <h2>Loading...</h2>;
+  }
+  if (error) {
+    return <h2>Error!</h2>;
+  }
 
   console.log("found user on my recipes: ", user);
 
