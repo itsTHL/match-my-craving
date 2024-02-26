@@ -1,0 +1,40 @@
+.recipe_list {
+  border: 1px solid green;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.recipe_listItem {
+  list-style: none;
+}
+.recipe_card {
+  border: 1px solid red;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 100px;
+}
+
+.delete_btn {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  font-size: 10px;
+  background-color: transparent;
+  box-shadow: none;
+  position: absolute;
+  right: 0;
+  top: px;
+}
+
+.recipe_card img {
+  height: 30px;
+}
+
+/* .img_container {
+  /* width: 80px; */
+/* height: 20px;
+} */

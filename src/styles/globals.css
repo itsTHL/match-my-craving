@@ -126,7 +126,7 @@ button {
 }
 
 img {
-  border-radius: var(--border-radius-img);
+  border-radius: var(--border-radius-medium);
   box-shadow: var(--box-shadow);
 }
 
