@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./NavBar.module.css";
+import BackButton from "./BackButton";
 
 export default function NavBar() {
   return (
@@ -11,7 +12,7 @@ export default function NavBar() {
         height="150"
         className={`${styles.nav_logo}`}
       />
-      <button>&larr;</button>
+      <BackButton />
     </nav>
   );
 }
