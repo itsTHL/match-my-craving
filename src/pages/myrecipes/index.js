@@ -42,18 +42,18 @@ export default function MyRecipes() {
                     <li className={`${styles.recipe_listItem}`}>
                       <div className={`${styles.recipe_card}`}>
                         {/* THIS BUTTON NEEDS TO BE Z-INDEX 2! */}
-                        <button
+                        {/* <button
                           className={`${styles.delete_btn}`}
                           type="button"
                         >
                           ❌
-                        </button>
+                        </button> */}
                         {/* <div className={`${styles.img_container}`}> */}
                         <Image
                           src="/salad.jpg"
                           alt="photo of a salad"
-                          width="500"
-                          height="500"
+                          width="80"
+                          height="80"
                           // fill={true}
                         />
                         {/* </div> */}

@@ -1,40 +1,49 @@
 .recipe_list {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
+  gap: 15px;
 }
 
 .recipe_listItem {
   list-style: none;
 }
 .recipe_card {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem;
+  /* padding: 2rem; */
   max-width: 100px;
+  gap: 10px;
+}
+
+.recipe_card h4 {
+  text-align: center;
 }
 
 .delete_btn {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   text-align: center;
   font-size: 10px;
   background-color: transparent;
   box-shadow: none;
   position: absolute;
   right: 0;
-  top: px;
+  top: -15px;
 }
 
 .recipe_card img {
-  height: 30px;
+  /* height: 30px; */
+  object-fit: cover;
 }
 
-/* .img_container {
-  /* width: 80px; */
-/* height: 20px;
-} */
+.img_container {
+  width: 100px;
+  height: 80px;
+  border: 1px solid slateblue;
+}

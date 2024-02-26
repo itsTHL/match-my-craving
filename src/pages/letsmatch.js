@@ -39,12 +39,12 @@ export default function SLetsMatch() {
 
   return (
     <form>
-      <input
+      {/* <input
         type="text"
         name="roomId"
         id="roomId"
         onChange={({ target }) => setRoomId(target.value)}
-      />
+      /> */}
       <button type="button" onClick={createRoom}>
         Create Room
       </button>
