@@ -74,15 +74,15 @@ export default function RecipeDetailsPage() {
           <button type="button">
             <Link href="/myrecipes">Back to all recipes</Link>
           </button>
-          {/* <button type="button">
-            {" "}
-            <Link href={`/myrecipes/${id}/editrecipe`}>Edit this Recipe</Link>
-          </button> */}
           <button type="button" onClick={toggleRecipeForm}>
             Edit
           </button>
           {recipeForm && (
-            <UserForm onHandleSubmit={handleEditRecipe} create={false} />
+            <UserForm
+              onHandleSubmit={handleEditRecipe}
+              create={false}
+              defaultData={recipe}
+            />
           )}
         </>
       )}
