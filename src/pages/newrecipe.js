@@ -6,9 +6,6 @@ export default function NewRecipe() {
   const { data: session, status } = useSession();
   console.log("session in new recipe: ", session);
 
-  // const id = session.user.id;
-  // console.log("user id in new recipe? ", id);
-
   const router = useRouter();
   const { isReady } = router;
 
