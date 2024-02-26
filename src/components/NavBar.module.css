@@ -1,10 +1,13 @@
 .nav {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: center;
   margin: 0;
+  height: 70px;
   background: rgba(245, 255, 250, 0.4);
   backdrop-filter: blur(6px);
+  box-shadow: var(--box-shadow);
 }
 
 .nav * {
@@ -14,12 +17,16 @@
 .nav button {
   background-color: transparent;
   padding: 0;
+  margin: 1rem;
   width: 50px;
   height: 50px;
 }
 
 .nav_logo {
   position: absolute;
-  top: 50px;
-  left: ;
+  top: -6px;
+  left: 0;
+  width: 10rem;
+  height: 7rem;
+  filter: drop-shadow(3px 3px 2px rgba(66, 107, 105, 0.2));
 }
