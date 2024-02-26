@@ -19,7 +19,6 @@ export default function MessageField({ roomId }) {
 
     if (response.ok) {
       event.target.reset();
-      console.log("event target: ", event.target);
     } else {
       console.error("Message not sent, try again");
     }

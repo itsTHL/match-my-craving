@@ -1,4 +1,5 @@
 import MatchingSession from "../../../../db/models/MatchingSession";
+import Message from "../../../../db/models/Message";
 import dbConnect from "../../../../db/connect";
 
 export default async function handler(request, response) {
