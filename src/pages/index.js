@@ -17,7 +17,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {session ? (
+      {!session ? (
+        <Login />
+      ) : (
         <>
           <h2 className={`${styles.greeting}`}>Hey {session.user.name}!</h2>
           <button>
@@ -36,8 +38,6 @@ export default function Home() {
             Sign out
           </button>
         </>
-      ) : (
-        <Login />
       )}
     </>
   );
