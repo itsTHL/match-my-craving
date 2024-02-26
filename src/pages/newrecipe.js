@@ -3,15 +3,21 @@ import UserForm from "@/components/UserForm";
 import { useSession } from "next-auth/react";
 
 export default function NewRecipe() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   console.log("session in new recipe: ", session);
 
-  const id = session.user.id;
-  console.log("user id in new recipe? ", id);
+  // const id = session.user.id;
+  // console.log("user id in new recipe? ", id);
 
   const router = useRouter();
   const { isReady } = router;
-  if (!isReady) return <h2>Not ready...</h2>;
+
+  if (status === "loading") {
+    return null;
+  }
+  if (!isReady) {
+    return <h2>Not ready...</h2>;
+  }
 
   async function handleSubmitRecipe(event) {
     event.preventDefault();
@@ -19,13 +25,16 @@ export default function NewRecipe() {
     const formData = new FormData(event.target);
     const newRecipe = Object.fromEntries(formData);
 
-    const response = await fetch(`/api/users/${id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newRecipe),
-    });
+    const response = await fetch(
+      session?.user ? `/api/users/${session.user.id}` : null,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newRecipe),
+      }
+    );
 
     if (response.ok) {
       event.target.reset();
