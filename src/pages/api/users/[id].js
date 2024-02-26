@@ -5,6 +5,7 @@ import User from "../../../../db/models/User";
 export default async function handler(request, response) {
   await dbConnect();
   const { id } = request.query;
+  console.log("request query: ", request.query);
 
   if (request.method === "GET") {
     const user = await User.findById(id).populate("recipes");
@@ -30,7 +31,6 @@ export default async function handler(request, response) {
     );
     response.setHeader("Location", `/myrecipes/${newRecipe._id}`);
     response.status(302).end();
-    response.status(201).json({ status: "Recipe added!" });
   } else {
     return response.status(405).json({ message: "Method not allowed" });
   }
