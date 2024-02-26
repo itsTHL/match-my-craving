@@ -9,3 +9,13 @@
   width: auto;
   padding-inline: 15px;
 }
+
+.logo {
+  box-shadow: none;
+  position: absolute;
+  top: -95px;
+}
+
+.greeting {
+  padding-top: 40px;
+}
