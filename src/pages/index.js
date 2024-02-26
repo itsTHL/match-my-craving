@@ -17,6 +17,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <section className={`${styles.intro_section}`}>
+        <p>
+          Tired of wondering what&apos;s for dinner? Endless discussions about
+          what to cook are stressing you out?
+        </p>
+        <p>
+          <strong>Match my Craving</strong> to the rescue!
+        </p>
+        <p>
+          Add your favorite recipes, swipe through your staple dishes and find
+          the perfect meal for breakfast, lunch, brunch or dinner - whenever you
+          want!
+        </p>
+        It&apos;s like Tinder for food, but with guaranteed matches every time!
+      </section>
+
       {!session ? (
         <Login />
       ) : (

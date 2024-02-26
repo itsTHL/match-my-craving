@@ -10,8 +10,10 @@
   padding-inline: 15px;
 }
 
-.logo {
-  box-shadow: none;
-  position: absolute;
-  top: -95px;
+.intro_section {
+  text-align: center;
+}
+
+.intro_section p {
+  padding: 0.5rem;
 }
