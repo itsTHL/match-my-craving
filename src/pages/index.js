@@ -20,12 +20,13 @@ export default function Home() {
       {session ? (
         <>
           <Image
-            src="/salad.jpg"
-            alt="photo of a salad"
-            width="150"
-            height="150"
+            src="/MMC_Logo_Black.png"
+            alt="MMC logo"
+            width="300"
+            height="200"
+            className={`${styles.logo}`}
           />
-          <h2>Hey {session.user.name}!</h2>
+          <h2 className={`${styles.greeting}`}>Hey {session.user.name}!</h2>
           <button>
             <Link href={`/letsmatch`}>Start a Session</Link>
           </button>
