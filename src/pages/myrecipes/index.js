@@ -38,29 +38,30 @@ export default function MyRecipes() {
             {recipes.length !== 0 ? (
               recipes.map((recipe) => {
                 return (
-                  <Link key={recipe._id} href={`/myrecipes/${recipe._id}`}>
-                    <li className={`${styles.recipe_listItem}`}>
+                  <li key={recipe._id} className={`${styles.recipe_listItem}`}>
+                    <button
+                      className={`${styles.delete_btn}`}
+                      type="button"
+                      onClick={() => console.log("clicked")}
+                    >
+                      ❌
+                    </button>
+                    <Link href={`/myrecipes/${recipe._id}`}>
                       <div className={`${styles.recipe_card}`}>
                         {/* THIS BUTTON NEEDS TO BE Z-INDEX 2! */}
-                        {/* <button
-                          className={`${styles.delete_btn}`}
-                          type="button"
-                        >
-                          ❌
-                        </button> */}
                         {/* <div className={`${styles.img_container}`}> */}
                         <Image
                           src="/salad.jpg"
                           alt="photo of a salad"
-                          width="80"
-                          height="80"
+                          width="200"
+                          height="100"
                           // fill={true}
                         />
                         {/* </div> */}
                         <h4>{recipe.title}</h4>
                       </div>
-                    </li>
-                  </Link>
+                    </Link>
+                  </li>
                 );
               })
             ) : (
