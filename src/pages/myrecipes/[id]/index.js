@@ -75,7 +75,7 @@ export default function RecipeDetailsPage() {
             <Link href="/myrecipes">Back to all recipes</Link>
           </button>
           <button type="button" onClick={toggleRecipeForm}>
-            Edit
+            {recipeForm ? "Close" : "Edit"}
           </button>
           {recipeForm && (
             <RecipeForm
