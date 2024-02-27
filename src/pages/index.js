@@ -19,18 +19,21 @@ export default function Home() {
 
       <section className={`${styles.intro_section}`}>
         <p>
-          Tired of wondering what&apos;s for dinner? Endless discussions about
-          what to cook are stressing you out?
+          Tired of wondering what&apos;s for breakfast, lunch, brunch, dinner...
+          ? Endless discussions about what to cook are stressing you out?
         </p>
         <p>
           <strong>Match my Craving</strong> to the rescue!
         </p>
         <p>
-          Add your favorite recipes, swipe through your staple dishes and find
-          the perfect meal for breakfast, lunch, brunch or dinner - whenever you
-          want!
+          It&apos;s like Tinder for food, but with guaranteed matches every
+          time!
         </p>
-        It&apos;s like Tinder for food, but with guaranteed matches every time!
+
+        <p>
+          Add your favorite recipes, start a matching session, swipe through
+          your staple dishes and find the perfect meal .
+        </p>
       </section>
 
       {!session ? (
