@@ -6,6 +6,7 @@ import Login from "@/components/Login";
 import Link from "next/link";
 import RecipeForm from "@/components/RecipeForm";
 import { useState } from "react";
+import styles from "../../../styles/recipedetailspage.module.css";
 
 export default function RecipeDetailsPage() {
   const { data: session } = useSession();
@@ -69,7 +70,13 @@ export default function RecipeDetailsPage() {
         <Login />
       ) : (
         <>
-          <Image src="/salad.jpg" alt="" width="150" height="150" />
+          <Image
+            src="/salad.jpg"
+            alt={`image of ${recipe.title}`}
+            width="300"
+            height="200"
+            className={`${styles.detail_img}`}
+          />
           <h2>{recipe.title}</h2>
           <p>{recipe.comment ? recipe.comment : null}</p>
           <button type="button">

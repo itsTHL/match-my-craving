@@ -48,16 +48,13 @@ export default function MyRecipes() {
                     </button>
                     <Link href={`/myrecipes/${recipe._id}`}>
                       <div className={`${styles.recipe_card}`}>
-                        {/* THIS BUTTON NEEDS TO BE Z-INDEX 2! */}
-                        {/* <div className={`${styles.img_container}`}> */}
                         <Image
                           src="/salad.jpg"
                           alt="photo of a salad"
                           width="200"
                           height="100"
-                          // fill={true}
                         />
-                        {/* </div> */}
+
                         <h4>{recipe.title}</h4>
                       </div>
                     </Link>

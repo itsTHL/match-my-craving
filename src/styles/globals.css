@@ -117,12 +117,13 @@ a {
 button {
   border-radius: var(--border-radius-medium);
   border: none;
-  background-color: var(--color-secondary-bright);
+  background-color: var(--color-secondary-dark);
   color: var(--color-primary-dark);
   /* font-weight: bold; */
   padding: 10px 8px;
   box-shadow: var(--box-shadow);
-  width: 80%;
+  width: 50%;
+  color: var(--color-primary-bright);
 }
 
 @media (min-width: 600px) {

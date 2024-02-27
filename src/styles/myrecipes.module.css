@@ -18,13 +18,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* padding: 2rem; */
-  /* max-width: 100px; */
   gap: 10px;
 }
 
 .recipe_card h4 {
-  /* text-align: center; */
   justify-self: flex-start;
   margin: 0;
 }
