@@ -2,16 +2,23 @@ import styles from "./RecipeForm.module.css";
 import { useRouter } from "next/router";
 import FoodPref from "./FoodPref";
 
-export default function RecipeForm({ onHandleSubmit, create, defaultData }) {
+export default function RecipeForm({
+  onHandleSubmit,
+  onHandleChange,
+  create,
+  defaultData,
+}) {
   return (
     <form
       className={`${styles.form}`}
       onSubmit={(event) => onHandleSubmit(event)}
+      onChange={(event) => onHandleChange(event)}
     >
       <h2>{create ? "Add a new recipe" : null}</h2>
-      <label htmlFor='imageupload"'>
+      <label htmlFor='file"'>
         {/* Pretending that there's an image upload field here */}
-        <div className={`${styles.imgupload_placeholder}`}>IMAGE UPLOAD</div>
+        {/* <div className={`${styles.imgupload_placeholder}`}>IMAGE UPLOAD</div> */}
+        <input type="file" name="file" id="title" />
       </label>
       <label htmlFor="title">
         <input
