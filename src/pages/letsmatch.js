@@ -3,16 +3,19 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
 export default function LetsMatch() {
-  // const [roomId, setRoomId] = useState();
-  const { data: session } = useSession();
+  const [roomId, setRoomId] = useState();
+  const { data: session, status } = useSession();
   console.log("session in lets match is: ", session);
-
-  const creatorId = session?.user?.id;
-  console.log("Creator? ", creatorId);
 
   const router = useRouter();
 
-  async function createRoom() {
+  if (status === "loading") {
+    return null;
+  }
+
+  async function createMatchingSession() {
+    const creatorId = session?.user?.id;
+    console.log("Creator? ", creatorId);
     // event.preventDefault();
 
     // const formData = new FormData(event.target);
@@ -41,20 +44,42 @@ export default function LetsMatch() {
     }
   }
 
-  // async function joinRoom(roomId) {
-  //   router.push(`/room/${roomId}`);
-  // }
+  async function joinMatchingSession(roomId) {
+    const id = session?.user?.id;
+    const response = await fetch(`/api/matchingsessions/${roomId}}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+      }),
+    });
+
+    if (response.ok) {
+      console.log("response: ", response);
+
+      router.push(`/matchingsessions/${roomId}`);
+    } else {
+      console.error(
+        "Matching session could not be found, do you have the correct id?"
+      );
+    }
+  }
 
   return (
     <form>
-      {/* <input
+      <input
         type="text"
         name="roomId"
         id="roomId"
         onChange={({ target }) => setRoomId(target.value)}
-      /> */}
-      <button type="button" onClick={createRoom}>
-        Create Room
+      />
+      <button type="button" onClick={() => joinMatchingSession(roomId)}>
+        Join Matching Session
+      </button>
+      <button type="button" onClick={createMatchingSession}>
+        Start Matching Session
       </button>
     </form>
   );
