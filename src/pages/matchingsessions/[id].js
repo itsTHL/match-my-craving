@@ -8,7 +8,6 @@ export default function MatchingSession() {
   const { isReady } = router;
 
   const { id } = router.query;
-  console.log("what is the room id? ", id);
 
   const {
     data: matchingSession,
@@ -20,8 +19,39 @@ export default function MatchingSession() {
   if (isLoading) return <h2>Loading...</h2>;
   if (error) return <h2>Errorrrrrr!</h2>;
 
-  const { participants: participants } = matchingSession;
-  console.log("Do we have participants? ", participants);
+  const { combinedRecipes } = matchingSession;
+  console.log("Do we have all recipes? ", combinedRecipes);
+
+  const fetchRecipeData = async (recipeId) => {
+    try {
+      const response = await fetch(`/api/recipes/${recipeId}`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error fetching message data:", error);
+      return null;
+    }
+  };
+
+  const fetchAllRecipesData = async () => {
+    const promises = combinedRecipes.map((recipeId) =>
+      fetchRecipeData(recipeId)
+    );
+    const allRecipesData = await Promise.all(promises);
+    return allRecipesData;
+  };
+
+  const handleRecipeData = async () => {
+    const allRecipesData = await fetchAllRecipesData();
+    console.log("All recipes data:", allRecipesData);
+    // Handle the fetched data as needed
+  };
+
+  handleRecipeData();
+
+  // const combinedRecipeDetails = combinedRecipes.map((recipe) => useSWR(`api/recipes/${recipe}`)
+  // );
+  // console.log(combinedRecipeDetails);
 
   return (
     <>

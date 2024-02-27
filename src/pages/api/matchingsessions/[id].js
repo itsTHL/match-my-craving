@@ -24,7 +24,7 @@ export default async function handler(request, response) {
         .status(404)
         .json({ status: "Matching session not found" });
     }
-    response.status(200).json(matchingSession);
+    response.status(200).json({ matchingSession, combinedRecipes });
   } else if (request.method === "PATCH") {
     const participantId = request.body.id;
 
