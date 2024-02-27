@@ -4,6 +4,7 @@ import Login from "@/components/Login";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../../styles/myrecipes.module.css";
+import { useRouter } from "next/router";
 
 export default function MyRecipes() {
   const { data: session, status } = useSession();
@@ -13,6 +14,8 @@ export default function MyRecipes() {
     isLoading,
     error,
   } = useSWR(session?.user ? `/api/users/${session.user.id}` : null);
+
+  const router = useRouter();
 
   if (status === "loading") {
     return null;
@@ -24,43 +27,51 @@ export default function MyRecipes() {
     return <h2>Error!</h2>;
   }
 
-  console.log("found user on my recipes: ", user);
-
   const { recipes } = user;
-  console.log("recipes? ", recipes);
+
+  async function handleDeleteRecipe(id) {
+    const response = await fetch(`/api/recipes/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      await response.json();
+      router.push("/myrecipes");
+    } else {
+      console.error(`Error: ${response.status}`);
+    }
+  }
 
   return (
     <>
       {session ? (
         <>
-          <h1>My recipes</h1>
+          <h1>My Cravings</h1>
           <ul className={`${styles.recipe_list}`}>
             {recipes.length !== 0 ? (
               recipes.map((recipe) => {
                 return (
-                  <Link key={recipe._id} href={`/myrecipes/${recipe._id}`}>
-                    <li className={`${styles.recipe_listItem}`}>
+                  <li key={recipe._id} className={`${styles.recipe_listItem}`}>
+                    <button
+                      className={`${styles.delete_btn}`}
+                      type="button"
+                      onClick={() => handleDeleteRecipe(recipe._id)}
+                    >
+                      ❌
+                    </button>
+                    <Link href={`/myrecipes/${recipe._id}`}>
                       <div className={`${styles.recipe_card}`}>
-                        {/* THIS BUTTON NEEDS TO BE Z-INDEX 2! */}
-                        {/* <button
-                          className={`${styles.delete_btn}`}
-                          type="button"
-                        >
-                          ❌
-                        </button> */}
-                        {/* <div className={`${styles.img_container}`}> */}
                         <Image
                           src="/salad.jpg"
                           alt="photo of a salad"
-                          width="80"
-                          height="80"
-                          // fill={true}
+                          width="200"
+                          height="100"
                         />
-                        {/* </div> */}
+
                         <h4>{recipe.title}</h4>
                       </div>
-                    </li>
-                  </Link>
+                    </Link>
+                  </li>
                 );
               })
             ) : (

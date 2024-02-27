@@ -1,5 +1,10 @@
+@font-face {
+  font-family: "Playpen";
+  src: url("/Playpen_Sans/PlaypenSans-VariableFont_wght.ttf");
+}
+
 :root {
-  --max-width: 1100px;
+  --max-width: 768px;
 
   --border-radius-small: 5px;
   --border-radius-medium: 12px;
@@ -7,9 +12,7 @@
 
   --box-shadow: 1px 1px 25px rgba(1, 22, 39, 0.2);
 
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  --font-mono: "Playpen";
 
   --color-primary-dark: #011627; /* 1, 22, 29 */
   --color-secondary-dark: #426b69; /* 66, 107, 105 */
@@ -106,7 +109,8 @@ body {
   background-position: center;
   background-size: cover;
   /* backdrop-filter: blur(6px) contrast(30%) brightness(120%); */
-  backdrop-filter: blur(6px);
+  /* backdrop-filter: blur(15px); */
+  font-family: var(--font-mono);
 }
 
 a {
@@ -117,20 +121,17 @@ a {
 button {
   border-radius: var(--border-radius-medium);
   border: none;
-  background-color: var(--color-secondary-bright);
+  background-color: var(--color-secondary-dark);
   color: var(--color-primary-dark);
   /* font-weight: bold; */
   padding: 10px 8px;
   box-shadow: var(--box-shadow);
-  width: 80%;
+  width: 50%;
+  color: var(--color-primary-bright);
+  font-family: var(--font-mono);
 }
 
-img {
-  border-radius: var(--border-radius-medium);
-  box-shadow: var(--box-shadow);
-}
-
-@media (min-width: 600px) {
+@media (min-width: 769px) {
   body {
     border: 3px solid var(--color-accent-bright); /* remove this later, only for orientation*/
   }
