@@ -10,11 +10,7 @@ export default async function handler(request, response) {
     const matchingSession = await MatchingSession.findById(id).populate(
       "participants"
     );
-    console.log("found matching session is: ", matchingSession);
-
     const { participants } = matchingSession;
-    console.log("participants here?", participants);
-
     const combinedRecipes = [];
 
     participants.map((participant) => {
@@ -23,8 +19,6 @@ export default async function handler(request, response) {
       });
     });
 
-    console.log("combined recipes: ", combinedRecipes);
-
     if (!matchingSession) {
       return response
         .status(404)
@@ -32,8 +26,6 @@ export default async function handler(request, response) {
     }
     response.status(200).json(matchingSession);
   } else if (request.method === "PATCH") {
-    console.log("req query id: ", id);
-    console.log("req body: ", request.body);
     const participantId = request.body.id;
 
     await MatchingSession.findByIdAndUpdate(
@@ -43,6 +35,8 @@ export default async function handler(request, response) {
       },
       { new: true } // This option indicates that the updated document should be returned. By default, findByIdAndUpdate returns the document as it was before the update. With { new: true }, it ensures that the updated document is returned.
     );
+
+    response.status(200).json({ message: "Participant added to session!" });
   } else {
     return response.status(405).json({ message: "Method not allowed" });
   }

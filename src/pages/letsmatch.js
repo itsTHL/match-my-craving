@@ -5,7 +5,6 @@ import { useSession } from "next-auth/react";
 export default function LetsMatch() {
   const [roomId, setRoomId] = useState();
   const { data: session, status } = useSession();
-  console.log("session in lets match is: ", session);
 
   const router = useRouter();
 
@@ -15,11 +14,6 @@ export default function LetsMatch() {
 
   async function createMatchingSession() {
     const creatorId = session?.user?.id;
-    console.log("Creator? ", creatorId);
-    // event.preventDefault();
-
-    // const formData = new FormData(event.target);
-    // const newRoom = Object.fromEntries(formData);
 
     const response = await fetch(`/api/matchingsessions/create`, {
       method: "POST",
@@ -33,12 +27,7 @@ export default function LetsMatch() {
     });
 
     if (response.ok) {
-      // event.target.reset();
-      console.log("response: ", response);
-
       router.push(`${response.url}`);
-
-      // router.push(`/room/${roomId}`);
     } else {
       console.error("Matching session not started, try again");
     }
@@ -57,8 +46,6 @@ export default function LetsMatch() {
     });
 
     if (response.ok) {
-      console.log("response: ", response);
-
       router.push(`/matchingsessions/${roomId}`);
     } else {
       console.error(
