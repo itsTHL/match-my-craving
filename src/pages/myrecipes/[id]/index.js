@@ -56,6 +56,7 @@ export default function RecipeDetailsPage() {
     if (response.ok) {
       event.target.reset();
       mutate();
+      toggleRecipeForm();
       router.push(`/myrecipes/${id}`);
     } else {
       console.error(`Error: ${response.status}`);
@@ -75,7 +76,7 @@ export default function RecipeDetailsPage() {
             <Link href="/myrecipes">Back to all recipes</Link>
           </button>
           <button type="button" onClick={toggleRecipeForm}>
-            Edit
+            {recipeForm ? "Discard changes" : "Edit"}
           </button>
           {recipeForm && (
             <RecipeForm
