@@ -4,6 +4,7 @@ import Login from "@/components/Login";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../../styles/myrecipes.module.css";
+import { useRouter } from "next/router";
 
 export default function MyRecipes() {
   const { data: session, status } = useSession();
@@ -13,6 +14,8 @@ export default function MyRecipes() {
     isLoading,
     error,
   } = useSWR(session?.user ? `/api/users/${session.user.id}` : null);
+
+  const router = useRouter();
 
   if (status === "loading") {
     return null;
@@ -24,10 +27,20 @@ export default function MyRecipes() {
     return <h2>Error!</h2>;
   }
 
-  console.log("found user on my recipes: ", user);
-
   const { recipes } = user;
-  console.log("recipes? ", recipes);
+
+  async function handleDeleteRecipe(id) {
+    const response = await fetch(`/api/recipes/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      await response.json();
+      router.push("/myrecipes");
+    } else {
+      console.error(`Error: ${response.status}`);
+    }
+  }
 
   return (
     <>
@@ -42,7 +55,7 @@ export default function MyRecipes() {
                     <button
                       className={`${styles.delete_btn}`}
                       type="button"
-                      onClick={() => console.log("clicked")}
+                      onClick={() => handleDeleteRecipe(recipe._id)}
                     >
                       ❌
                     </button>
