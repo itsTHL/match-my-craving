@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import User from "./User";
+import Recipe from "./Recipe";
 
 const { Schema, models, model } = mongoose;
 

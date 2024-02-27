@@ -10,6 +10,7 @@ export default async function handler(request, response) {
     const matchingSession = await MatchingSession.findById(id).populate(
       "participants"
     );
+
     const { participants } = matchingSession;
     const combinedRecipes = [];
 
@@ -18,6 +19,14 @@ export default async function handler(request, response) {
         combinedRecipes.push(recipe);
       });
     });
+
+    // TEST AREA - START
+
+    await MatchingSession.findByIdAndUpdate(id, {
+      $push: { combinedRecipes: combinedRecipes },
+    });
+
+    // TEST AREA - END
 
     if (!matchingSession) {
       return response

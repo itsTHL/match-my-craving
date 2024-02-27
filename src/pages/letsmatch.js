@@ -14,6 +14,7 @@ export default function LetsMatch() {
 
   async function createMatchingSession() {
     const creatorId = session?.user?.id;
+    const creatorRecipes = session?.user?.recipes;
 
     const response = await fetch(`/api/matchingsessions/create`, {
       method: "POST",
@@ -23,6 +24,7 @@ export default function LetsMatch() {
       body: JSON.stringify({
         creator: creatorId,
         participants: [creatorId],
+        combinedRecipes: [],
       }),
     });
 
@@ -35,6 +37,7 @@ export default function LetsMatch() {
 
   async function joinMatchingSession(roomId) {
     const id = session?.user?.id;
+    const recipes = session?.user?.recipes;
     const response = await fetch(`/api/matchingsessions/${roomId}`, {
       method: "PATCH",
       headers: {
