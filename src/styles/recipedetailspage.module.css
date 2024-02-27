@@ -1,4 +1,5 @@
 .detail_img {
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--border-radius-img);
   box-shadow: var(--box-shadow);
+  object-fit: cover;
 }

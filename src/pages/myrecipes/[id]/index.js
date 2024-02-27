@@ -73,7 +73,7 @@ export default function RecipeDetailsPage() {
           <Image
             src="/salad.jpg"
             alt={`image of ${recipe.title}`}
-            width="300"
+            width="200"
             height="200"
             className={`${styles.detail_img}`}
           />
