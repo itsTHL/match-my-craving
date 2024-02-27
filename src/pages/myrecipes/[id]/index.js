@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Login from "@/components/Login";
 import Link from "next/link";
-import UserForm from "@/components/UserForm";
+import RecipeForm from "@/components/RecipeForm";
 import { useState } from "react";
 
 export default function RecipeDetailsPage() {
@@ -78,7 +78,7 @@ export default function RecipeDetailsPage() {
             Edit
           </button>
           {recipeForm && (
-            <UserForm
+            <RecipeForm
               onHandleSubmit={handleEditRecipe}
               create={false}
               defaultData={recipe}

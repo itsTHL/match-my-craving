@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import UserForm from "@/components/UserForm";
+import RecipeForm from "@/components/RecipeForm";
 import { useSession } from "next-auth/react";
 
 export default function NewRecipe() {
@@ -44,7 +44,7 @@ export default function NewRecipe() {
 
   return (
     <>
-      <UserForm onHandleSubmit={handleSubmitRecipe} create={true} />
+      <RecipeForm onHandleSubmit={handleSubmitRecipe} create={true} />
     </>
   );
 }

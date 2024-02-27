@@ -1,8 +1,8 @@
-import styles from "./UserForm.module.css";
+import styles from "./RecipeForm.module.css";
 import { useRouter } from "next/router";
 import FoodPref from "./FoodPref";
 
-export default function UserForm({ onHandleSubmit, create, defaultData }) {
+export default function RecipeForm({ onHandleSubmit, create, defaultData }) {
   return (
     <form
       className={`${styles.form}`}
