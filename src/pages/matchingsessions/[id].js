@@ -25,7 +25,7 @@ export default function MatchingSession() {
 
   return (
     <>
-      <h1>Hello, we in the room Id page</h1>
+      <h1>Welcome to the matching session!</h1>
       {/* <Messages existingMessages={existingMessages} roomId={id} />
       <MessageField roomId={id} /> */}
     </>

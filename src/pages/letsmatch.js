@@ -46,13 +46,13 @@ export default function LetsMatch() {
 
   async function joinMatchingSession(roomId) {
     const id = session?.user?.id;
-    const response = await fetch(`/api/matchingsessions/${roomId}}`, {
+    const response = await fetch(`/api/matchingsessions/${roomId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id,
+        id: id,
       }),
     });
 
