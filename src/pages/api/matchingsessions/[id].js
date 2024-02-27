@@ -1,5 +1,5 @@
 import MatchingSession from "../../../../db/models/MatchingSession";
-import Message from "../../../../db/models/Message";
+import User from "../../../../db/models/User";
 import dbConnect from "../../../../db/connect";
 
 export default async function handler(request, response) {
@@ -8,7 +8,7 @@ export default async function handler(request, response) {
 
   if (request.method === "GET") {
     const matchingSession = await MatchingSession.findById(id).populate(
-      "messages"
+      "participants"
     );
     console.log("found matching session is: ", matchingSession);
 

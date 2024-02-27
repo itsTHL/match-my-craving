@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
-export default function SLetsMatch() {
-  const [roomId, setRoomId] = useState();
+export default function LetsMatch() {
+  // const [roomId, setRoomId] = useState();
+  const { data: session } = useSession();
+  console.log("session in lets match is: ", session);
+
+  const creatorId = session?.user?.id;
+  console.log("Creator? ", creatorId);
+
   const router = useRouter();
-  const { id } = router.query;
-  console.log("is this the user id in URL? ", id);
 
   async function createRoom() {
     // event.preventDefault();
@@ -18,7 +23,10 @@ export default function SLetsMatch() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(null),
+      body: JSON.stringify({
+        creator: creatorId,
+        participants: [creatorId],
+      }),
     });
 
     if (response.ok) {

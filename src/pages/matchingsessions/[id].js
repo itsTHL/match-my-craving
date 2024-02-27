@@ -20,14 +20,14 @@ export default function MatchingSession() {
   if (isLoading) return <h2>Loading...</h2>;
   if (error) return <h2>Errorrrrrr!</h2>;
 
-  const { messages: existingMessages } = matchingSession;
-  console.log("Do we have messages? ", existingMessages);
+  const { participants: participants } = matchingSession;
+  console.log("Do we have participants? ", participants);
 
   return (
     <>
       <h1>Hello, we in the room Id page</h1>
-      <Messages existingMessages={existingMessages} roomId={id} />
-      <MessageField roomId={id} />
+      {/* <Messages existingMessages={existingMessages} roomId={id} />
+      <MessageField roomId={id} /> */}
     </>
   );
 }

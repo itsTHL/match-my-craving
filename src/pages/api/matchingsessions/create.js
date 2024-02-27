@@ -14,7 +14,7 @@ export default async function handler(request, response) {
       console.log("new matching Session: ", newMatchingSession);
 
       const id = newMatchingSession._id;
-      console.log("id or oid? ", id);
+      console.log("matching session id is: ", id);
 
       response.setHeader("Location", `/matchingsessions/${id.$oid ?? id}`);
       response.status(302).end();
