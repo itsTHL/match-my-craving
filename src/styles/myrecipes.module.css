@@ -30,13 +30,13 @@
   width: 30px;
   height: 30px;
   text-align: center;
-  font-size: 15px;
+  font-size: 25px;
   background-color: transparent;
   box-shadow: none;
   position: absolute;
   right: -9px;
-  top: -20px;
-  z-index: 2;
+  top: -30px;
+  color: darkred;
 }
 
 .img_container {

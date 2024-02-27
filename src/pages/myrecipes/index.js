@@ -46,7 +46,7 @@ export default function MyRecipes() {
     <>
       {session ? (
         <>
-          <h1>My recipes</h1>
+          <h1>My Cravings</h1>
           <ul className={`${styles.recipe_list}`}>
             {recipes.length !== 0 ? (
               recipes.map((recipe) => {
