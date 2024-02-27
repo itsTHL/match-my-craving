@@ -6,16 +6,16 @@ import BackButton from "./BackButton";
 export default function NavBar() {
   return (
     <nav className={`${styles.nav}`}>
+      <BackButton />
       <Link href="/">
         <Image
           src="/MMC_Logo_Black.png"
           alt="MMC Logo"
-          width="200"
-          height="150"
+          width="220"
+          height="200"
           className={`${styles.nav_logo}`}
         />
       </Link>
-      <BackButton />
     </nav>
   );
 }
