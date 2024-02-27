@@ -12,6 +12,19 @@ export default async function handler(request, response) {
     );
     console.log("found matching session is: ", matchingSession);
 
+    const { participants } = matchingSession;
+    console.log("participants here?", participants);
+
+    const combinedRecipes = [];
+
+    participants.map((participant) => {
+      participant.recipes.map((recipe) => {
+        combinedRecipes.push(recipe);
+      });
+    });
+
+    console.log("combined recipes: ", combinedRecipes);
+
     if (!matchingSession) {
       return response
         .status(404)
