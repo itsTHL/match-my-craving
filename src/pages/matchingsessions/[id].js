@@ -80,7 +80,7 @@ export default function MatchingSession() {
 
     return (
       <>
-        <h1>Welcome to the matching session!</h1>
+        <h2>Welcome to the matching session!</h2>
         <RecipeCard id={combinedRecipes[recipeIndex]} />
         <button type="button" onClick={() => setRecipeIndex(recipeIndex + 1)}>
           Meh.
