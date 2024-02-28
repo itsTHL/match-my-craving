@@ -1,0 +1,25 @@
+.matchingSession__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.matchingSession__form input {
+  padding: 0.5em;
+  font-size: 0.7em;
+  width: 80%;
+  border-radius: var(--border-radius-medium);
+  box-shadow: none;
+  border: none;
+}
+
+.matchingSession__form button {
+  width: 60%;
+  font-size: 0.8em;
+}
+
+.matchingSession__form p {
+  font-size: 0.8em;
+  margin-block: 1rem;
+}

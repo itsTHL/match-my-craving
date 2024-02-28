@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import styles from "../styles/letsmatch.module.css";
 
 export default function LetsMatch() {
   const [roomId, setRoomId] = useState();
@@ -58,18 +59,20 @@ export default function LetsMatch() {
   }
 
   return (
-    <form>
+    <form className={`${styles.matchingSession__form}`}>
+      <button type="button" onClick={createMatchingSession}>
+        Start Matching Session
+      </button>
+      <p>OR</p>
       <input
         type="text"
         name="roomId"
         id="roomId"
+        placeholder="What's the matching session id?"
         onChange={({ target }) => setRoomId(target.value)}
       />
       <button type="button" onClick={() => joinMatchingSession(roomId)}>
         Join Matching Session
-      </button>
-      <button type="button" onClick={createMatchingSession}>
-        Start Matching Session
       </button>
     </form>
   );
