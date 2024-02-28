@@ -15,7 +15,7 @@ export default function RecipeCard({ id }) {
   return (
     <>
       <Image
-        src="/salad.jpg"
+        src={!recipe.image ? "/food_placeholder.png" : recipe.image}
         alt={`image of ${recipe.title}`}
         width="200"
         height="200"

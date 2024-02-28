@@ -21,14 +21,6 @@ export default async function handler(request, response) {
       });
     });
 
-    // TEST AREA - START
-
-    // await MatchingSession.findByIdAndUpdate(id, {
-    //   $push: { combinedRecipes: combinedRecipes },
-    // });
-
-    // TEST AREA - END
-
     if (!matchingSession) {
       return response
         .status(404)
@@ -47,10 +39,7 @@ export default async function handler(request, response) {
     );
 
     response.status(200).json({ message: "Participant added to session!" });
-  }
-
-  // TEST AREA START
-  else if (request.method === "POST") {
+  } else if (request.method === "POST") {
     try {
       const likedRecipeId = request.body.likedRecipeId;
 
@@ -60,6 +49,8 @@ export default async function handler(request, response) {
       const { likedRecipes } = session;
 
       if (likedRecipes && likedRecipes.includes(likedRecipeId)) {
+        pusherServer.trigger(id, "match", likedRecipeId);
+
         return response.status(200).json({ message: "It's a match!" });
       } else {
         await MatchingSession.findByIdAndUpdate(
@@ -75,10 +66,7 @@ export default async function handler(request, response) {
     } catch (error) {
       console.log("Error: ", error);
     }
-  }
-
-  // TEST AREA END
-  else {
+  } else {
     return response.status(405).json({ message: "Method not allowed" });
   }
 }

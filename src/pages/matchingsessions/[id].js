@@ -10,41 +10,35 @@ export default function MatchingSession() {
   // GETTING THE ID
   const router = useRouter();
   const { isReady } = router;
-  const { id } = router.query;
+  const { id: sessionId } = router.query;
 
   // SETTING A STATE FOR RECIPE INDEX
   const [recipeIndex, setRecipeIndex] = useState(0);
-
-  // SETTING A STATE FOR MATCHES
-  const [matches, setMatches] = useState([]);
 
   // FETCHING DATA FOR SPECIFIC MATCHING SESSION
   const {
     data: matchingSession,
     isLoading,
     error,
-  } = useSWR(`/api/matchingsessions/${id}`);
+  } = useSWR(`/api/matchingsessions/${sessionId}`);
 
   // SETTING UP PUSHER CHANNEL
-  // useEffect(() => {
-  //   if (!id) {
-  //     return;
-  //   }
+  useEffect(() => {
+    if (!sessionId) {
+      return;
+    }
 
-  //   const channel = pusherClient.subscribe(`${id}`);
+    pusherClient.subscribe(`${sessionId}`);
 
-  //   // Update likedRecipes state with the received data
-  //   // Here you should handle the received data as per your requirements
-  //   channel.bind();
+    pusherClient.bind("match", (response) => {
+      console.log("response: ", response);
+      alert("It's a match!");
+    });
 
-  //   channel.bind("matches", () => {
-  //     alert("It's a match!");
-  //   });
-
-  //   return () => {
-  //     pusherClient.unsubscribe(`${id}`);
-  //   };
-  // }, [id]);
+    return () => {
+      pusherClient.unsubscribe(`${sessionId}`);
+    };
+  }, []);
 
   // GETTING COMBINED RECIPES IDS IN ONE ARRAY
   if (matchingSession && matchingSession.combinedRecipes) {
@@ -70,7 +64,7 @@ export default function MatchingSession() {
       setRecipeIndex(recipeIndex + 1);
 
       if (response.status === 200) {
-        console.log("It's a match!");
+        alert("It's a match!");
       } else if (response.status === 201) {
         null;
       } else {
@@ -89,7 +83,7 @@ export default function MatchingSession() {
         <button type="button" onClick={() => setRecipeIndex(recipeIndex + 1)}>
           Meh.
         </button>
-        <button type="button" onClick={() => handleLikeRecipe(id)}>
+        <button type="button" onClick={() => handleLikeRecipe(sessionId)}>
           Yum!
         </button>
         {/* <Messages existingMessages={existingMessages} roomId={id} />
@@ -101,44 +95,3 @@ export default function MatchingSession() {
     );
   }
 }
-
-// ARCHIVE
-
-//   // BASIC FUNCTION TO FETCH RECIPE DATA
-//   async function fetchRecipeData(recipeId) {
-//     try {
-//       const response = await fetch(`/api/recipes/${recipeId}`);
-//       const data = await response.json();
-//       return data;
-//     } catch (error) {
-//       console.error("Error fetching message data:", error);
-//       return null;
-//     }
-//   }
-
-//   // FUNCTION THAT MAPS OVER COMBINED RECIPE ARRAY AND FETCHING THE RECIPE DATA FOR EVERY ID IN THE ARRAY
-//   // stores all the promises in new variable
-//   async function fetchAllRecipesData() {
-//     const promises = combinedRecipes.map((recipeId) =>
-//       fetchRecipeData(recipeId)
-//     );
-//     const allRecipesData = await Promise.all(promises);
-//     return allRecipesData;
-//   }
-
-//   async function handleRecipeData() {
-//     const allRecipesData = await fetchAllRecipesData();
-//     console.log("All recipes data:", allRecipesData);
-//     return allRecipesData;
-//   }
-
-//   handleRecipeData();
-
-//   // useEffect(() => {
-//   //   const fetchData = async () => {
-//   //     const data = await handleRecipeData();
-//   //     setAllRecipesData(data);
-//   //   };
-//   //   fetchData();
-//   // }, []);
-// }
