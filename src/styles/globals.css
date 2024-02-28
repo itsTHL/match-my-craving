@@ -54,7 +54,7 @@ button {
   /* font-weight: bold; */
   padding: 10px 8px;
   box-shadow: var(--box-shadow);
-  width: 50%;
+  width: 60%;
   color: var(--color-primary-bright);
   font-family: var(--font-mono);
 }

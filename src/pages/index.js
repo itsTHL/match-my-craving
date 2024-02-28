@@ -20,13 +20,13 @@ export default function Home() {
         <>
           <h2 className={`${styles.greeting}`}>Hey {session.user.name}!</h2>
           <button>
-            <Link href={`/letsmatch`}>Start a Session</Link>
+            <Link href={`/letsmatch`}>Let&apos;s match!</Link>
           </button>
           <button>
-            <Link href={`/myrecipes`}>Show my Recipes</Link>
+            <Link href={`/myrecipes`}>Show my Cravings</Link>
           </button>
           <button>
-            <Link href={`/newrecipe`}>Add new Recipe</Link>
+            <Link href={`/newrecipe`}>Add new Craving</Link>
           </button>
           <button
             onClick={() => signOut("google")}
