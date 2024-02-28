@@ -1,5 +1,3 @@
-import MessageField from "@/components/MessageField";
-import Messages from "@/components/Messages";
 import RecipeCard from "@/components/RecipeCard";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -90,11 +88,6 @@ export default function MatchingSession() {
         <button type="button" onClick={() => handleLikeRecipe(sessionId)}>
           Yum!
         </button>
-        {/* <Messages existingMessages={existingMessages} roomId={id} />
-      <MessageField roomId={id} /> */}
-        {/* {allRecipesData.map((recipe) => (
-        <div key={recipe.id}>{recipe.title}</div>
-      ))}{" "} */}
       </>
     );
   }
