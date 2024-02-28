@@ -16,8 +16,8 @@ export default function MatchingSession() {
     isLoading,
     error,
   } = useSWR(`/api/matchingsessions/${id}`);
-  const [recipeNum, setRecipeNum] = useState(0);
-  console.log("recipeNum is: ", recipeNum);
+  const [recipeIndex, setRecipeIndex] = useState(0);
+  console.log("recipeNum is: ", recipeIndex);
 
   // const [allRecipesData, setAllRecipesData] = useState([]);
 
@@ -36,9 +36,12 @@ export default function MatchingSession() {
     return (
       <>
         <h1>Welcome to the matching session!</h1>
-        <RecipeCard id={combinedRecipes[recipeNum]} />
-        <button type="button" onClick={() => setRecipeNum(recipeNum + 1)}>
-          Try me!
+        <RecipeCard id={combinedRecipes[recipeIndex]} />
+        <button type="button" onClick={() => setRecipeIndex(recipeIndex + 1)}>
+          Meh.
+        </button>
+        <button type="button" onClick={() => setRecipeIndex(recipeIndex + 1)}>
+          Yum!
         </button>
         {/* <Messages existingMessages={existingMessages} roomId={id} />
       <MessageField roomId={id} /> */}
