@@ -4,17 +4,18 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Login from "@/components/Login";
 import Link from "next/link";
-import UserForm from "@/components/UserForm";
+import RecipeForm from "@/components/RecipeForm";
 import { useState } from "react";
+import RecipeCard from "@/components/RecipeCard";
 
 export default function RecipeDetailsPage() {
   const { data: session } = useSession();
+  const [recipeForm, setRecipeForm] = useState(false);
 
   const router = useRouter();
   const { isReady } = router;
 
   const { id } = router.query;
-  console.log("is this the correct id? ", id);
 
   const {
     data: recipe,
@@ -22,7 +23,6 @@ export default function RecipeDetailsPage() {
     error,
     mutate,
   } = useSWR(`/api/recipes/${id}`);
-  const [recipeForm, setRecipeForm] = useState(false);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -33,8 +33,6 @@ export default function RecipeDetailsPage() {
   if (!isReady) {
     return <h2>Not ready...</h2>;
   }
-
-  console.log("recipe in recipe details page: ", recipe);
 
   const toggleRecipeForm = () => {
     setRecipeForm(!recipeForm); // Toggle the showForm state
@@ -56,6 +54,7 @@ export default function RecipeDetailsPage() {
     if (response.ok) {
       event.target.reset();
       mutate();
+      toggleRecipeForm();
       router.push(`/myrecipes/${id}`);
     } else {
       console.error(`Error: ${response.status}`);
@@ -68,17 +67,15 @@ export default function RecipeDetailsPage() {
         <Login />
       ) : (
         <>
-          <Image src="/salad.jpg" alt="" width="150" height="150" />
-          <h2>{recipe.title}</h2>
-          <p>{recipe.comment ? recipe.comment : null}</p>
+          <RecipeCard id={id} />
           <button type="button">
             <Link href="/myrecipes">Back to all recipes</Link>
           </button>
           <button type="button" onClick={toggleRecipeForm}>
-            Edit
+            {recipeForm ? "Discard changes" : "Edit"}
           </button>
           {recipeForm && (
-            <UserForm
+            <RecipeForm
               onHandleSubmit={handleEditRecipe}
               create={false}
               defaultData={recipe}

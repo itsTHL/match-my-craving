@@ -6,7 +6,7 @@
   margin: 0;
   height: 70px;
   background: rgba(245, 255, 250, 0.4);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(20px);
   box-shadow: var(--box-shadow);
 }
 
@@ -27,9 +27,9 @@
 
 .nav_logo {
   position: absolute;
-  top: -6px;
-  left: 0;
-  width: 10rem;
-  height: 7rem;
+  top: -20px;
+  right: 0;
+  /* width: 10rem; */
+  height: 10rem;
   filter: drop-shadow(3px 3px 2px rgba(66, 107, 105, 0.2));
 }
