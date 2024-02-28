@@ -1,52 +1,75 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
-export default function SLetsMatch() {
+export default function LetsMatch() {
   const [roomId, setRoomId] = useState();
+  const { data: session, status } = useSession();
+
   const router = useRouter();
-  const { id } = router.query;
-  console.log("is this the user id in URL? ", id);
 
-  async function createRoom() {
-    // event.preventDefault();
+  if (status === "loading") {
+    return null;
+  }
 
-    // const formData = new FormData(event.target);
-    // const newRoom = Object.fromEntries(formData);
+  async function createMatchingSession() {
+    const creatorId = session?.user?.id;
+    const creatorRecipes = session?.user?.recipes;
 
     const response = await fetch(`/api/matchingsessions/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(null),
+      body: JSON.stringify({
+        creator: creatorId,
+        participants: [creatorId],
+        combinedRecipes: [],
+      }),
     });
 
     if (response.ok) {
-      // event.target.reset();
-      console.log("response: ", response);
-
       router.push(`${response.url}`);
-
-      // router.push(`/room/${roomId}`);
     } else {
       console.error("Matching session not started, try again");
     }
   }
 
-  // async function joinRoom(roomId) {
-  //   router.push(`/room/${roomId}`);
-  // }
+  async function joinMatchingSession(roomId) {
+    const id = session?.user?.id;
+    const recipes = session?.user?.recipes;
+    const response = await fetch(`/api/matchingsessions/${roomId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+      }),
+    });
+
+    if (response.ok) {
+      router.push(`/matchingsessions/${roomId}`);
+    } else {
+      console.error(
+        "Matching session could not be found, do you have the correct id?"
+      );
+    }
+  }
 
   return (
     <form>
-      {/* <input
+      <input
         type="text"
         name="roomId"
         id="roomId"
         onChange={({ target }) => setRoomId(target.value)}
-      /> */}
-      <button type="button" onClick={createRoom}>
-        Create Room
+      />
+      <button type="button" onClick={() => joinMatchingSession(roomId)}>
+        Join Matching Session
+      </button>
+      <button type="button" onClick={createMatchingSession}>
+        Start Matching Session
       </button>
     </form>
   );

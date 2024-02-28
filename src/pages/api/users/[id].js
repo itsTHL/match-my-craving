@@ -5,11 +5,9 @@ import User from "../../../../db/models/User";
 export default async function handler(request, response) {
   await dbConnect();
   const { id } = request.query;
-  console.log("request query: ", request.query);
 
   if (request.method === "GET") {
     const user = await User.findById(id).populate("recipes");
-    console.log("found user is: ", user);
 
     if (!user) {
       return response.status(404).json({ status: "User not found" });
@@ -17,10 +15,8 @@ export default async function handler(request, response) {
 
     response.status(200).json(user);
   } else if (request.method === "POST") {
-    console.log("id: ", request.query);
     const recipeData = request.body;
     const newRecipe = await Recipe.create(recipeData);
-    console.log("new Recipe: ", newRecipe);
 
     await User.findByIdAndUpdate(
       id,

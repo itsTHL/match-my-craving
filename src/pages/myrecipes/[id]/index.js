@@ -6,16 +6,16 @@ import Login from "@/components/Login";
 import Link from "next/link";
 import RecipeForm from "@/components/RecipeForm";
 import { useState } from "react";
-import styles from "../../../styles/recipedetailspage.module.css";
+import RecipeCard from "@/components/RecipeCard";
 
 export default function RecipeDetailsPage() {
   const { data: session } = useSession();
+  const [recipeForm, setRecipeForm] = useState(false);
 
   const router = useRouter();
   const { isReady } = router;
 
   const { id } = router.query;
-  console.log("is this the correct id? ", id);
 
   const {
     data: recipe,
@@ -23,7 +23,6 @@ export default function RecipeDetailsPage() {
     error,
     mutate,
   } = useSWR(`/api/recipes/${id}`);
-  const [recipeForm, setRecipeForm] = useState(false);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -34,8 +33,6 @@ export default function RecipeDetailsPage() {
   if (!isReady) {
     return <h2>Not ready...</h2>;
   }
-
-  console.log("recipe in recipe details page: ", recipe);
 
   const toggleRecipeForm = () => {
     setRecipeForm(!recipeForm); // Toggle the showForm state
@@ -70,15 +67,7 @@ export default function RecipeDetailsPage() {
         <Login />
       ) : (
         <>
-          <Image
-            src="/salad.jpg"
-            alt={`image of ${recipe.title}`}
-            width="200"
-            height="200"
-            className={`${styles.detail_img}`}
-          />
-          <h2>{recipe.title}</h2>
-          <p>{recipe.comment ? recipe.comment : null}</p>
+          <RecipeCard id={id} />
           <button type="button">
             <Link href="/myrecipes">Back to all recipes</Link>
           </button>

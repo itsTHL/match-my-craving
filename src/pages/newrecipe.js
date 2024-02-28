@@ -7,8 +7,6 @@ export default function NewRecipe() {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
 
-  //Triggers when the file input changes (ex: when a file is selected)
-
   function handleChange(changeEvent) {
     if (!changeEvent.target.files || changeEvent.target.files.length === 0) {
       console.error("No files selected.");
@@ -24,11 +22,7 @@ export default function NewRecipe() {
     reader.readAsDataURL(changeEvent.target.files[0]);
   }
 
-  // MY CODE FROM HERE
-  //
-
   const { data: session, status } = useSession();
-  console.log("session in new recipe: ", session);
 
   const router = useRouter();
   const { isReady } = router;
@@ -44,10 +38,6 @@ export default function NewRecipe() {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-
-    // const fileInput = Array.from(event.target.elements).find(
-    //   ({ name }) => name === "file"
-    // );
 
     const fileInput = event.target.elements["file"];
 
@@ -74,7 +64,6 @@ export default function NewRecipe() {
       if (fileInput && fileInput.files.length > 0) {
         const imageFormData = new FormData();
         imageFormData.append("file", fileInput.files[0]);
-        // Append Cloudinary upload preset if required
         imageFormData.append("upload_preset", "wesbhypg");
 
         const imageData = await fetch(
@@ -92,24 +81,6 @@ export default function NewRecipe() {
       }
     }
   }
-  //   const imageFormData = new FormData();
-  //   for (const file of fileInput.files) {
-  //     imageFormData.append("file", file);
-  //   }
-
-  //   const imageData = await fetch(
-  //     "https://api.cloudinary.com/v1_1/dhlpyg6wk/image/upload",
-  //     {
-  //       method: "POST",
-  //       body: imageFormData,
-  //     }
-  //   ).then((r) => r.json());
-
-  //   // formData.append("upload_preset", "wesbhypg");
-
-  //   setImageSrc(imageData.secure_url);
-  //   setUploadData(imageData);
-  // }
 
   return (
     <>
