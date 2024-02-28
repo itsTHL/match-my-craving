@@ -1,0 +1,11 @@
+.matchAlert {
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 20vh;
+  left: -5vw;
+  width: 90vw;
+  height: 10rem;
+}

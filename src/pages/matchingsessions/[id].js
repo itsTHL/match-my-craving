@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { pusherClient } from "@/lib/pusher";
+import MatchAlert from "@/components/MatchAlert";
 
 export default function MatchingSession() {
   // GETTING THE ID
@@ -80,6 +81,7 @@ export default function MatchingSession() {
 
     return (
       <>
+        {/* <MatchAlert /> */}
         <h1>Welcome to the matching session!</h1>
         <RecipeCard id={combinedRecipes[recipeIndex]} />
         <button type="button" onClick={() => setRecipeIndex(recipeIndex + 1)}>
