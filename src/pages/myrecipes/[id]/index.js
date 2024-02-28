@@ -16,7 +16,6 @@ export default function RecipeDetailsPage() {
   const { isReady } = router;
 
   const { id } = router.query;
-  console.log("id in recipe details page: ", id);
 
   const {
     data: recipe,

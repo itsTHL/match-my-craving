@@ -4,7 +4,6 @@ import { useSession } from "next-auth/react";
 
 export default function NewRecipe() {
   const { data: session, status } = useSession();
-  console.log("session in new recipe: ", session);
 
   const router = useRouter();
   const { isReady } = router;
@@ -35,7 +34,6 @@ export default function NewRecipe() {
 
     if (response.ok) {
       event.target.reset();
-      console.log("response: ", response);
       router.push(`${response.url}`);
     } else {
       console.error("Recipe not added, try again");

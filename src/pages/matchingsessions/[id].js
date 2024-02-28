@@ -4,22 +4,47 @@ import RecipeCard from "@/components/RecipeCard";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
+import { pusherClient } from "@/lib/pusher";
 
 export default function MatchingSession() {
+  // GETTING THE ID
   const router = useRouter();
   const { isReady } = router;
-
   const { id } = router.query;
 
+  // SETTING A STATE FOR RECIPE INDEX
+  const [recipeIndex, setRecipeIndex] = useState(0);
+
+  // SETTING A STATE FOR MATCHES
+  const [matches, setMatches] = useState([]);
+
+  // FETCHING DATA FOR SPECIFIC MATCHING SESSION
   const {
     data: matchingSession,
     isLoading,
     error,
   } = useSWR(`/api/matchingsessions/${id}`);
-  const [recipeIndex, setRecipeIndex] = useState(0);
-  console.log("recipeNum is: ", recipeIndex);
 
-  // const [allRecipesData, setAllRecipesData] = useState([]);
+  // SETTING UP PUSHER CHANNEL
+  // useEffect(() => {
+  //   if (!id) {
+  //     return;
+  //   }
+
+  //   const channel = pusherClient.subscribe(`${id}`);
+
+  //   // Update likedRecipes state with the received data
+  //   // Here you should handle the received data as per your requirements
+  //   channel.bind();
+
+  //   channel.bind("matches", () => {
+  //     alert("It's a match!");
+  //   });
+
+  //   return () => {
+  //     pusherClient.unsubscribe(`${id}`);
+  //   };
+  // }, [id]);
 
   // GETTING COMBINED RECIPES IDS IN ONE ARRAY
   if (matchingSession && matchingSession.combinedRecipes) {
@@ -27,7 +52,31 @@ export default function MatchingSession() {
     if (!combinedRecipes) {
       return null;
     }
-    console.log("Do we have all recipes? ", combinedRecipes);
+
+    async function handleLikeRecipe(matchingSessionId) {
+      const response = await fetch(
+        `/api/matchingsessions/${matchingSessionId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            likedRecipeId: combinedRecipes[recipeIndex],
+          }),
+        }
+      );
+
+      setRecipeIndex(recipeIndex + 1);
+
+      if (response.status === 200) {
+        console.log("It's a match!");
+      } else if (response.status === 201) {
+        null;
+      } else {
+        console.error("Recipe could not be added to liked recipes.");
+      }
+    }
 
     if (!isReady) return <h2>Not ready...</h2>;
     if (isLoading) return <h2>Loading...</h2>;
@@ -40,7 +89,7 @@ export default function MatchingSession() {
         <button type="button" onClick={() => setRecipeIndex(recipeIndex + 1)}>
           Meh.
         </button>
-        <button type="button" onClick={() => setRecipeIndex(recipeIndex + 1)}>
+        <button type="button" onClick={() => handleLikeRecipe(id)}>
           Yum!
         </button>
         {/* <Messages existingMessages={existingMessages} roomId={id} />

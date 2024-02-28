@@ -8,6 +8,7 @@ const matchingSessionSchema = new Schema({
   // messages: { type: [Schema.Types.ObjectId], ref: "Message" },
   creator: { type: String },
   participants: { type: [Schema.Types.ObjectId], ref: "User" },
+  likedRecipes: { type: [String] },
 });
 
 const MatchingSession =
