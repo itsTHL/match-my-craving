@@ -16,27 +16,28 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className={`${styles.intro_section}`}>
-        <p>
-          Tired of wondering what&apos;s for breakfast, lunch, brunch, dinner...
-          ? Endless discussions about what to cook are stressing you out?
-        </p>
-        <p>
-          <strong>Match my Craving</strong> to the rescue!
-        </p>
-        <p>
-          It&apos;s like Tinder for food, but with guaranteed matches every
-          time!
-        </p>
-
-        <p>
-          Add your favorite recipes, start a matching session, swipe through
-          your staple dishes and find the perfect meal .
-        </p>
-      </section>
-
       {!session ? (
-        <Login />
+        <>
+          <section className={`${styles.intro_section}`}>
+            <p>
+              Tired of wondering what&apos;s for breakfast, lunch, brunch,
+              dinner... ?
+            </p>
+            <p>
+              <strong>Match my Craving</strong> to the rescue!
+            </p>
+            <p>
+              It&apos;s like Tinder for food, but with guaranteed matches every
+              time!
+            </p>
+
+            <p>
+              Add your favorite cravings, start a matching session, get swiping
+              and find the perfect meal.
+            </p>
+          </section>
+          <Login />
+        </>
       ) : (
         <>
           <h2 className={`${styles.greeting}`}>Hey {session.user.name}!</h2>
