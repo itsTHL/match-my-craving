@@ -40,7 +40,7 @@ export default function MatchingSession() {
     return () => {
       pusherClient.unsubscribe(`${sessionId}`);
     };
-  }, [recipeIndex]);
+  }, [sessionId]);
 
   // GETTING COMBINED RECIPES IDS IN ONE ARRAY
   if (matchingSession && matchingSession.combinedRecipes) {
