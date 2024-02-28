@@ -16,9 +16,7 @@ export default function RecipeForm({
     >
       <h2>{create ? "Add a new recipe" : null}</h2>
       <label htmlFor='file"'>
-        {/* Pretending that there's an image upload field here */}
-        {/* <div className={`${styles.imgupload_placeholder}`}>IMAGE UPLOAD</div> */}
-        <input type="file" name="file" id="title" />
+        <input type="file" name="image" id="image" />
       </label>
       <label htmlFor="title">
         <input

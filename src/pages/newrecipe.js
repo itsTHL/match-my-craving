@@ -45,11 +45,15 @@ export default function NewRecipe() {
 
     const formData = new FormData(event.target);
 
-    const fileInput = Array.from(event.target.elements).find(
-      ({ name }) => name === "file"
-    );
+    // const fileInput = Array.from(event.target.elements).find(
+    //   ({ name }) => name === "file"
+    // );
+
+    const fileInput = event.target.elements["file"];
 
     const newRecipe = Object.fromEntries(formData);
+
+    newRecipe.image = imageSrc;
 
     const recipeResponse = await fetch(
       session?.user ? `/api/users/${session.user.id}` : null,
@@ -66,28 +70,46 @@ export default function NewRecipe() {
       event.target.reset();
       console.log("recipe response: ", recipeResponse);
       router.push(`${recipeResponse.url}`);
-    } else {
-      console.error("Recipe not added, try again");
-    }
 
-    const imageFormData = new FormData();
-    for (const file of fileInput.files) {
-      imageFormData.append("file", file);
-    }
+      if (fileInput && fileInput.files.length > 0) {
+        const imageFormData = new FormData();
+        imageFormData.append("file", fileInput.files[0]);
+        // Append Cloudinary upload preset if required
+        imageFormData.append("upload_preset", "wesbhypg");
 
-    const imageData = await fetch(
-      "https://api.cloudinary.com/v1_1/dhlpyg6wk/image/upload",
-      {
-        method: "POST",
-        body: imageFormData,
+        const imageData = await fetch(
+          "https://api.cloudinary.com/v1_1/dhlpyg6wk/image/upload",
+          {
+            method: "POST",
+            body: imageFormData,
+          }
+        ).then((r) => r.json());
+
+        setImageSrc(imageData.secure_url);
+        setUploadData(imageData);
+      } else {
+        console.error("Recipe not added, try again");
       }
-    ).then((r) => r.json());
-
-    // formData.append("upload_preset", "wesbhypg");
-
-    setImageSrc(imageData.secure_url);
-    setUploadData(imageData);
+    }
   }
+  //   const imageFormData = new FormData();
+  //   for (const file of fileInput.files) {
+  //     imageFormData.append("file", file);
+  //   }
+
+  //   const imageData = await fetch(
+  //     "https://api.cloudinary.com/v1_1/dhlpyg6wk/image/upload",
+  //     {
+  //       method: "POST",
+  //       body: imageFormData,
+  //     }
+  //   ).then((r) => r.json());
+
+  //   // formData.append("upload_preset", "wesbhypg");
+
+  //   setImageSrc(imageData.secure_url);
+  //   setUploadData(imageData);
+  // }
 
   return (
     <>

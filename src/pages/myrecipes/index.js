@@ -62,7 +62,7 @@ export default function MyRecipes() {
                     <Link href={`/myrecipes/${recipe._id}`}>
                       <div className={`${styles.recipe_card}`}>
                         <Image
-                          src="/salad.jpg"
+                          src={recipe.image}
                           alt="photo of a salad"
                           width="200"
                           height="100"
