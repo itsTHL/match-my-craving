@@ -30,15 +30,19 @@ export default function MatchingSession() {
 
     pusherClient.subscribe(`${sessionId}`);
 
-    pusherClient.bind("match", (response) => {
-      console.log("response: ", response);
-      alert("It's a match!");
-    });
+    pusherClient.bind(
+      "match",
+      (response) => {
+        console.log("response: ", response);
+        alert("It's a match!");
+      },
+      pusherClient.unbind()
+    );
 
     return () => {
       pusherClient.unsubscribe(`${sessionId}`);
     };
-  }, []);
+  }, [recipeIndex]);
 
   // GETTING COMBINED RECIPES IDS IN ONE ARRAY
   if (matchingSession && matchingSession.combinedRecipes) {
