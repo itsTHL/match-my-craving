@@ -16,7 +16,29 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {session ? (
+      {!session ? (
+        <>
+          <section className={`${styles.intro_section}`}>
+            <p>
+              Tired of wondering what&apos;s for breakfast, lunch, brunch,
+              dinner... ?
+            </p>
+            <p>
+              <strong>Match my Craving</strong> to the rescue!
+            </p>
+            <p>
+              It&apos;s like Tinder for food, but with guaranteed matches every
+              time!
+            </p>
+
+            <p>
+              Add your favorite cravings, start a matching session, get swiping
+              and find the perfect meal.
+            </p>
+          </section>
+          <Login />
+        </>
+      ) : (
         <>
           <h2 className={`${styles.greeting}`}>Hey {session.user.name}!</h2>
           <button>
@@ -35,8 +57,6 @@ export default function Home() {
             Sign out
           </button>
         </>
-      ) : (
-        <Login />
       )}
     </>
   );
