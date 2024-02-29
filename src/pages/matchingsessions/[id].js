@@ -3,11 +3,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { pusherClient } from "@/lib/pusher";
-<<<<<<< HEAD
 import MatchAlert from "@/components/MatchAlert";
-=======
 import styles from "../../styles/matchingsession.module.css";
->>>>>>> main
 
 export default function MatchingSession() {
   // GETTING THE ID
@@ -39,7 +36,7 @@ export default function MatchingSession() {
       "match",
       (response) => {
         console.log("response: ", response);
-        alert("It's a match!");
+        // alert("It's a match!");
       },
       pusherClient.unbind()
     );
@@ -74,6 +71,7 @@ export default function MatchingSession() {
 
       if (response.status === 200) {
         alert("It's a match!");
+        router.push(`/myrecipes/${combinedRecipes[recipeIndex]}`);
       } else if (response.status === 201) {
         null;
       } else {
@@ -87,16 +85,13 @@ export default function MatchingSession() {
 
     return (
       <>
-<<<<<<< HEAD
-        {/* <MatchAlert /> */}
-        <h1>Welcome to the matching session!</h1>
-=======
-        <h2>Welcome to the matching session!</h2>
+        <div className={`${styles.matchingSession_container}`}>
+          <h2>Welcome to the matching session!</h2>
+        </div>
 
         <p>Copy this id and send it to your matching mates:</p>
         <p className={`${styles.id_p}`}>{sessionId}</p>
 
->>>>>>> main
         <RecipeCard id={combinedRecipes[recipeIndex]} />
         <div className={`${styles.btn_container}`}>
           <button type="button" onClick={() => setRecipeIndex(recipeIndex + 1)}>
@@ -106,6 +101,7 @@ export default function MatchingSession() {
             Yum!
           </button>
         </div>
+        {/* <MatchAlert /> */}
       </>
     );
   }

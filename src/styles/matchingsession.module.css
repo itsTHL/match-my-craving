@@ -1,6 +1,10 @@
+.matchingSession_container {
+  padding-top: 2rem;
+}
+
 .id_p {
   color: var(--color-secondary-dark);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   font-weight: bold;
 }
 
