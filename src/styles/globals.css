@@ -36,9 +36,10 @@ main {
 }
 
 body {
-  background-image: url("/tableware.jpg");
+  background-image: url("/bg_img.jpg");
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   font-family: var(--font-mono);
 }
 
