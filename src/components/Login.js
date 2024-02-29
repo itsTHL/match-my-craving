@@ -4,17 +4,17 @@ import styles from "./Login.module.css";
 
 export default function Login() {
   return (
-    <>
+    <div className={`${styles.login_container}`}>
       <h3>Sign in and start matching!</h3>
 
       <Image
         src="/Google_SI.png"
         alt="sign in with google button"
-        width="700"
-        height="160"
+        width="140"
+        height="32"
         onClick={() => signIn("google")}
         className={`${styles.google_SI}`}
       />
-    </>
+    </div>
   );
 }
