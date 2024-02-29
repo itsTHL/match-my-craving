@@ -18,8 +18,6 @@
   --color-primary-dark: #011627; /* 1, 22, 29 */
   --color-secondary-dark: #426b69; /* 66, 107, 105 */
   --color-primary-bright: #f5fffa; /* 245, 255, 250 */
-  --color-secondary-bright: #ffc15e; /* 255, 193, 94 */
-  --color-accent-dark: #af3e4d; /* 175, 62, 77 */
   --color-accent-bright: #d6fff4; /* 214, 255, 244 */
 }
 
@@ -64,4 +62,9 @@ button {
   width: 60%;
   color: var(--color-primary-bright);
   font-family: var(--font-mono);
+  transition: transform 0.01s ease-in;
+}
+
+button:active {
+  transform: scale(0.95); /* Make the button smaller when clicked */
 }
