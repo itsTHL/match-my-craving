@@ -29,7 +29,8 @@
 }
 
 html,
-body {
+body,
+main {
   max-width: var(--max-width);
   overflow-x: hidden;
 }
