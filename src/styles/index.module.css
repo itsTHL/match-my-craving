@@ -13,3 +13,7 @@
 .intro_section p {
   padding: 0.5rem;
 }
+
+.greeting {
+  color: var(--color-primary-dark);
+}
