@@ -4,6 +4,7 @@
 }
 
 :root {
+  --min-width: 320px;
   --max-width: 768px;
 
   --border-radius-small: 5px;
@@ -28,18 +29,22 @@
   margin: 0 auto;
 }
 
-html,
-body,
+/* html, */
+/* body, */
 main {
+  min-width: var(--min-width);
   max-width: var(--max-width);
   overflow-x: hidden;
 }
 
 body {
-  background-image: url("/bg_img.jpg");
+  width: 100%;
+  background-image: url("/char-siu.jpg");
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
   background-repeat: no-repeat;
+  backdrop-filter: contrast(80%) brightness(110%);
   font-family: var(--font-mono);
 }
 
@@ -59,16 +64,4 @@ button {
   width: 60%;
   color: var(--color-primary-bright);
   font-family: var(--font-mono);
-}
-
-@media (min-width: 769px) {
-  body {
-    border: 3px solid var(--color-accent-bright); /* remove this later, only for orientation*/
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
