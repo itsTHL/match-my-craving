@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { pusherClient } from "@/lib/pusher";
+import styles from "../../styles/matchingsession.module.css";
 
 export default function MatchingSession() {
   // GETTING THE ID
@@ -15,10 +16,12 @@ export default function MatchingSession() {
 
   // FETCHING DATA FOR SPECIFIC MATCHING SESSION
   const {
-    data: matchingSession,
+    data: matchingSessionData,
     isLoading,
     error,
   } = useSWR(`/api/matchingsessions/${sessionId}`);
+
+  console.log("matchingggg: ", matchingSessionData);
 
   // SETTING UP PUSHER CHANNEL
   useEffect(() => {
@@ -43,8 +46,8 @@ export default function MatchingSession() {
   }, [sessionId]);
 
   // GETTING COMBINED RECIPES IDS IN ONE ARRAY
-  if (matchingSession && matchingSession.combinedRecipes) {
-    const { combinedRecipes } = matchingSession;
+  if (matchingSessionData && matchingSessionData.combinedRecipes) {
+    const { combinedRecipes } = matchingSessionData;
     if (!combinedRecipes) {
       return null;
     }
@@ -81,13 +84,23 @@ export default function MatchingSession() {
     return (
       <>
         <h2>Welcome to the matching session!</h2>
+
+        <p>Copy this id and send it to your matching mates:</p>
+        <input
+          type="text"
+          value={`${sessionId}`}
+          className={`${styles.id_input}`}
+        ></input>
+
         <RecipeCard id={combinedRecipes[recipeIndex]} />
-        <button type="button" onClick={() => setRecipeIndex(recipeIndex + 1)}>
-          Meh.
-        </button>
-        <button type="button" onClick={() => handleLikeRecipe(sessionId)}>
-          Yum!
-        </button>
+        <div className={`${styles.btn_container}`}>
+          <button type="button" onClick={() => setRecipeIndex(recipeIndex + 1)}>
+            Meh.
+          </button>
+          <button type="button" onClick={() => handleLikeRecipe(sessionId)}>
+            Yum!
+          </button>
+        </div>
       </>
     );
   }

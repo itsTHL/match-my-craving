@@ -1,0 +1,19 @@
+.id_input {
+  color: grey;
+  padding: 0.8em;
+  width: 50%;
+  text-align: center;
+  border-radius: var(--border-radius-small);
+  border: none;
+  margin-bottom: 3rem;
+}
+
+.btn_container {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1em;
+}
+
+.btn_container button {
+  width: 4rem;
+}
