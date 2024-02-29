@@ -1,19 +1,27 @@
 .recipe_list {
   /* border: 1px solid green; */
-  display: grid;
-  /* justify-content: flex-start;
-  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap-reverse;
   width: 100%;
-  gap: 15px; */
+  gap: 15px;
+  /* width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px 25px; */
+}
+
+/* .recipe_list {
+  display: grid;
   width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 25px 25px;
-}
+} */
 
 .recipe_listItem {
   list-style: none;
   position: relative;
 }
+
 .recipe_card {
   display: flex;
   flex-direction: column;

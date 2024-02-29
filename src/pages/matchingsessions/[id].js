@@ -86,7 +86,7 @@ export default function MatchingSession() {
         <h2>Welcome to the matching session!</h2>
 
         <p>Copy this id and send it to your matching mates:</p>
-        <p className={`${styles.id_p}`}>${sessionId}</p>
+        <p className={`${styles.id_p}`}>{sessionId}</p>
 
         <RecipeCard id={combinedRecipes[recipeIndex]} />
         <div className={`${styles.btn_container}`}>
