@@ -1,19 +1,27 @@
 .recipe_list {
   /* border: 1px solid green; */
-  display: grid;
-  /* justify-content: flex-start;
-  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap-reverse;
   width: 100%;
-  gap: 15px; */
+  gap: 15px;
+  /* width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px 25px; */
+}
+
+/* .recipe_list {
+  display: grid;
   width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 25px 25px;
-}
+} */
 
 .recipe_listItem {
   list-style: none;
   position: relative;
 }
+
 .recipe_card {
   display: flex;
   flex-direction: column;
@@ -28,14 +36,15 @@
 
 .delete_btn {
   width: 30px;
-  height: 30px;
+  height: 25px;
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
+  font-weight: bold;
   background-color: transparent;
   box-shadow: none;
   position: absolute;
-  right: -9px;
-  top: -30px;
+  right: -13px;
+  top: -25px;
   color: darkred;
 }
 
@@ -48,4 +57,5 @@
 .recipe_card img {
   border-radius: var(--border-radius-medium);
   object-fit: cover;
+  box-shadow: var(--box-shadow);
 }

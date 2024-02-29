@@ -1,21 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./NavBar.module.css";
-import BackButton from "./BackButton";
+import styles from "./Header.module.css";
 
-export default function NavBar() {
+export default function Header() {
   return (
-    <nav className={`${styles.nav}`}>
-      <BackButton />
+    <header className={`${styles.header}`}>
       <Link href="/">
         <Image
           src="/MMC_Logo_Black.png"
           alt="MMC Logo"
           width="220"
           height="200"
-          className={`${styles.nav_logo}`}
+          className={`${styles.logo}`}
         />
       </Link>
-    </nav>
+    </header>
   );
 }

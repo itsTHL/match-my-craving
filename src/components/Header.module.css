@@ -1,0 +1,30 @@
+.header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+  min-width: var(--min-width);
+  width: var(--max-width);
+  height: 70px;
+  /* background: rgba(245, 255, 250, 0.3);
+  backdrop-filter: blur(20px); */
+  box-shadow: none;
+  border-radius: var(--border-radius-small);
+  z-index: 2;
+}
+
+.header * {
+  box-shadow: none;
+}
+
+.logo {
+  position: absolute;
+  top: -20px;
+  right: 100px;
+  /* width: 10rem; */
+  height: 10rem;
+  filter: drop-shadow(3px 3px 2px rgba(245, 255, 250, 0.5));
+  z-index: 3;
+}

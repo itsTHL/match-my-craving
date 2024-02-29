@@ -6,8 +6,15 @@
   font-size: 0.7rem;
 }
 
-.logo {
-  box-shadow: none;
-  position: absolute;
-  top: -95px;
+.intro_section {
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.intro_section p {
+  padding: 0.5rem;
+}
+
+.greeting {
+  color: var(--color-primary-dark);
 }

@@ -1,0 +1,15 @@
+.id_p {
+  color: var(--color-secondary-dark);
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.btn_container {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1em;
+}
+
+.btn_container button {
+  width: 4rem;
+}

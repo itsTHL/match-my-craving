@@ -13,6 +13,7 @@ export default function MyRecipes() {
     data: user,
     isLoading,
     error,
+    mutate,
   } = useSWR(session?.user ? `/api/users/${session.user.id}` : null);
 
   const router = useRouter();
@@ -36,6 +37,7 @@ export default function MyRecipes() {
 
     if (response.ok) {
       await response.json();
+      mutate();
       router.push("/myrecipes");
     } else {
       console.error(`Error: ${response.status}`);
@@ -57,12 +59,16 @@ export default function MyRecipes() {
                       type="button"
                       onClick={() => handleDeleteRecipe(recipe._id)}
                     >
-                      ❌
+                      X
                     </button>
                     <Link href={`/myrecipes/${recipe._id}`}>
                       <div className={`${styles.recipe_card}`}>
                         <Image
-                          src={recipe.image}
+                          src={
+                            recipe.image
+                              ? recipe.image
+                              : "/food_placeholder.png"
+                          }
                           alt="photo of a salad"
                           width="200"
                           height="100"

@@ -14,7 +14,7 @@ export default function RecipeForm({
       onSubmit={(event) => onHandleSubmit(event)}
       onChange={(event) => onHandleChange(event)}
     >
-      <h2>{create ? "Add a new recipe" : null}</h2>
+      <h2>{create ? "Add a new Craving" : null}</h2>
       <label htmlFor='file"'>
         <input type="file" name="image" id="image" />
       </label>
@@ -41,7 +41,7 @@ export default function RecipeForm({
       </label>
       <FoodPref />
       <button type="submit">
-        {create ? "Add to recipes" : "Save changes"}
+        {create ? "Add to Cravings" : "Save changes"}
       </button>
     </form>
   );

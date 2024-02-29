@@ -24,9 +24,7 @@ export default async function handler(request, response) {
       .json({ status: "Product successfully updated." });
   } else if (request.method === "DELETE") {
     await Recipe.findByIdAndDelete(id);
-
     response.status(260).json("Recipe deleted");
-    return response.status(200).json(products);
   } else {
     return response.status(405).json({ message: "Method not allowed" });
   }
