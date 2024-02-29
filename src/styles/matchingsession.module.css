@@ -1,11 +1,7 @@
-.id_input {
-  color: grey;
-  padding: 0.8em;
-  width: 50%;
-  text-align: center;
-  border-radius: var(--border-radius-small);
-  border: none;
-  margin-bottom: 3rem;
+.id_p {
+  color: var(--color-secondary-dark);
+  margin-bottom: 2rem;
+  font-weight: bold;
 }
 
 .btn_container {
