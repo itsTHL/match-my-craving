@@ -1,4 +1,4 @@
-.nav {
+.header {
   position: fixed;
   top: 0;
   display: flex;
@@ -8,34 +8,23 @@
   min-width: var(--min-width);
   width: var(--max-width);
   height: 70px;
-  background: rgba(245, 255, 250, 0.3);
-  backdrop-filter: blur(20px);
-  box-shadow: var(--box-shadow);
+  /* background: rgba(245, 255, 250, 0.3);
+  backdrop-filter: blur(20px); */
+  box-shadow: none;
   border-radius: var(--border-radius-small);
   z-index: 2;
 }
 
-.nav * {
+.header * {
   box-shadow: none;
 }
 
-.nav button {
-  background-color: transparent;
-  padding: 0;
-  margin: 1rem;
-  width: 50px;
-  height: 50px;
-  font-weight: bold;
-  font-size: 1.5rem;
-  text-justify: center;
-}
-
-.nav_logo {
+.logo {
   position: absolute;
   top: -20px;
   right: 100px;
   /* width: 10rem; */
   height: 10rem;
-  filter: drop-shadow(3px 3px 2px rgba(245, 255, 250, 0.2));
+  filter: drop-shadow(3px 3px 2px rgba(245, 255, 250, 0.5));
   z-index: 3;
 }
