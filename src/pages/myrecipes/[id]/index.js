@@ -69,7 +69,7 @@ export default function RecipeDetailsPage() {
         <>
           <RecipeCard id={id} />
           <button type="button">
-            <Link href="/myrecipes">Back to all recipes</Link>
+            <Link href="/myrecipes">Back to all Cravings</Link>
           </button>
           <button type="button" onClick={toggleRecipeForm}>
             {recipeForm ? "Discard changes" : "Edit"}
