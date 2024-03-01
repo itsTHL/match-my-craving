@@ -12,12 +12,19 @@ export default function RecipeForm({
     <form
       className={`${styles.form}`}
       onSubmit={(event) => onHandleSubmit(event)}
-      onChange={(event) => onHandleChange(event)}
     >
       <h2>{create ? "Add a new Craving" : null}</h2>
-      <label htmlFor='file"'>
-        <input type="file" name="image" id="image" />
-      </label>
+
+      {create ? (
+        <label htmlFor='file"'>
+          <input
+            type="file"
+            name="image"
+            id="image"
+            onChange={(event) => onHandleChange(event)}
+          />
+        </label>
+      ) : null}
       <label htmlFor="title">
         <input
           type="text"
