@@ -1,0 +1,16 @@
+.matchAlert {
+  background: rgba(214, 255, 244, 0.4);
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius-medium);
+  border: 1px solid var(--color-accent-bright);
+  color: var(--color-secondary-dark);
+  text-shadow: var(--color-primary-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 200px;
+  left: -12%;
+  width: 120%;
+  height: 10rem;
+}

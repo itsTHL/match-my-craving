@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { pusherClient } from "@/lib/pusher";
+import MatchAlert from "@/components/MatchAlert";
 import styles from "../../styles/matchingsession.module.css";
 
 export default function MatchingSession() {
@@ -34,8 +35,7 @@ export default function MatchingSession() {
     pusherClient.bind(
       "match",
       (response) => {
-        console.log("response: ", response);
-        alert("It's a match!");
+        router.push(`/myrecipes/${response}`), alert("It's a match!");
       },
       pusherClient.unbind()
     );
@@ -68,13 +68,14 @@ export default function MatchingSession() {
 
       setRecipeIndex(recipeIndex + 1);
 
-      if (response.status === 200) {
-        alert("It's a match!");
-      } else if (response.status === 201) {
-        null;
-      } else {
-        console.error("Recipe could not be added to liked recipes.");
-      }
+      // if (response.status === 200) {
+      //   // alert("It's a match!");
+      //   router.push(`/myrecipes/${combinedRecipes[recipeIndex]}`);
+      // } else if (response.status === 201) {
+      //   null;
+      // } else {
+      //   console.error("Recipe could not be added to liked recipes.");
+      // }
     }
 
     if (!isReady) return <h2>Not ready...</h2>;
@@ -83,7 +84,9 @@ export default function MatchingSession() {
 
     return (
       <>
-        <h2>Welcome to the matching session!</h2>
+        <div className={`${styles.matchingSession_container}`}>
+          <h2>Welcome to the matching session!</h2>
+        </div>
 
         <p>Copy this id and send it to your matching mates:</p>
         <p className={`${styles.id_p}`}>{sessionId}</p>
@@ -97,6 +100,7 @@ export default function MatchingSession() {
             Yum!
           </button>
         </div>
+        {/* <MatchAlert /> */}
       </>
     );
   }
