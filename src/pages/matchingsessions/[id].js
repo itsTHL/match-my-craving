@@ -35,8 +35,7 @@ export default function MatchingSession() {
     pusherClient.bind(
       "match",
       (response) => {
-        console.log("response: ", response);
-        // alert("It's a match!");
+        router.push(`/myrecipes/${response}`), alert("It's a match!");
       },
       pusherClient.unbind()
     );
@@ -69,14 +68,14 @@ export default function MatchingSession() {
 
       setRecipeIndex(recipeIndex + 1);
 
-      if (response.status === 200) {
-        alert("It's a match!");
-        router.push(`/myrecipes/${combinedRecipes[recipeIndex]}`);
-      } else if (response.status === 201) {
-        null;
-      } else {
-        console.error("Recipe could not be added to liked recipes.");
-      }
+      // if (response.status === 200) {
+      //   // alert("It's a match!");
+      //   router.push(`/myrecipes/${combinedRecipes[recipeIndex]}`);
+      // } else if (response.status === 201) {
+      //   null;
+      // } else {
+      //   console.error("Recipe could not be added to liked recipes.");
+      // }
     }
 
     if (!isReady) return <h2>Not ready...</h2>;
