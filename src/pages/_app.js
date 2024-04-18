@@ -2,7 +2,6 @@ import "@/styles/globals.css";
 import Provider from "@/components/Provider";
 import Layout from "@/components/Layout";
 import { SWRConfig } from "swr";
-import Header from "@/components/Header";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
