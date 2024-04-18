@@ -6,15 +6,15 @@ import Image from "next/image";
 export default function ContentContainer({ children }) {
   return (
     <div className={`${styles.content_container}`}>
-      {/* <Link href="/">
+      <Link href="/">
         <Image
           src="/MMC_Logo_Black.png"
           alt="MMC Logo"
           width="220"
           height="200"
-          className={`${styles.nav_logo}`}
+          className={`${styles.logo}`}
         />
-      </Link> */}
+      </Link>
       <BackButton />
       {children}
     </div>

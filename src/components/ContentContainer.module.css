@@ -12,3 +12,12 @@
   position: relative;
   width: 80%;
 }
+
+.logo {
+  position: absolute;
+  top: -71px;
+  right: 15px;
+  height: 10rem;
+  filter: drop-shadow(3px 3px 2px rgba(245, 255, 250, 0.5));
+  z-index: 3;
+}
