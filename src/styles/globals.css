@@ -3,6 +3,11 @@
   src: url("/Playpen_Sans/PlaypenSans-VariableFont_wght.ttf");
 }
 
+@font-face {
+  font-family: "Nunito";
+  src: url("/Nunito/Nunito-VariableFont_wght.ttf");
+}
+
 :root {
   --min-width: 320px;
   --max-width: 768px;
@@ -13,7 +18,8 @@
 
   --box-shadow: 1px 1px 25px rgba(1, 22, 39, 0.2);
 
-  --font-mono: "Playpen";
+  --font-regular: "Nunito";
+  --font-h: "Playpen";
 
   --color-primary-dark: #011627; /* 1, 22, 29 */
   --color-secondary-dark: #426b69; /* 66, 107, 105 */
@@ -43,7 +49,7 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   backdrop-filter: contrast(80%) brightness(110%) blur(0.6px);
-  font-family: var(--font-mono);
+  font-family: var(--font-regular);
 }
 
 a {
@@ -67,4 +73,9 @@ button {
 
 button:active {
   transform: scale(0.95); /* Make the button smaller when clicked */
+}
+
+h1,
+h2 {
+  font-family: var(--font-h);
 }
